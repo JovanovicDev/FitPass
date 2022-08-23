@@ -1,5 +1,6 @@
 package beans;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -10,9 +11,9 @@ public class Korisnik {
 	private String sifra;
 	private String ime;
 	private String prezime;
-	private String pol;
+	private Pol pol;
 	private Date datumRodjenja;
-	private String uloga; //Administrator, Menadzer, Trener, Kupac
+	private Uloga uloga; //Administrator, Menadzer, Trener, Kupac
 	//Samo za ulogu Trener
 	private List<IstorijaTreninga> istorijaTreninga; //lista prethodnih treninga
 	//Samo za ulogu Menadzer
@@ -28,9 +29,9 @@ public class Korisnik {
 		this.sifra = "";
 		this.ime = "";
 		this.prezime = "";
-		this.pol = "";
+		this.pol = null;
 		this.datumRodjenja = null;
-		this.uloga = "";
+		this.uloga = Uloga.KUPAC;
 		this.istorijaTreninga = new ArrayList<IstorijaTreninga>();
 		this.sportskiObjekat = null;
 		this.clanarina = null;
@@ -39,8 +40,7 @@ public class Korisnik {
 		this.tipKupca = null;
 	}
 
-	public Korisnik(String username, String sifra, String ime, String prezime, String pol, Date datumRodjenja,
-			String uloga) {
+	public Korisnik(String username, String sifra, String ime, String prezime, Pol pol, Date datumRodjenja) {
 		super();
 		this.username = username;
 		this.sifra = sifra;
@@ -48,13 +48,30 @@ public class Korisnik {
 		this.prezime = prezime;
 		this.pol = pol;
 		this.datumRodjenja = datumRodjenja;
-		this.uloga = uloga;
+		this.uloga = Uloga.KUPAC;
 		this.istorijaTreninga = new ArrayList<IstorijaTreninga>();
 		this.sportskiObjekat = null;
 		this.clanarina = null;
 		this.poseceniObjekti = new ArrayList<SportskiObjekat>();
 		this.brojSakupljenihBodova = 0;
 		this.tipKupca = null;
+	}
+	
+	public Korisnik(Korisnik k) {
+		super();
+		this.username = k.getUsername();
+		this.sifra = k.getSifra();
+		this.ime = k.getIme();
+		this.prezime = k.getPrezime();
+		this.pol = k.getPol();
+		this.datumRodjenja = k.getDatumRodjenja();
+		this.uloga = k.getUloga();
+		this.istorijaTreninga = k.getIstorijaTreninga();
+		this.sportskiObjekat = k.getSportskiObjekat();
+		this.clanarina = k.getClanarina();
+		this.poseceniObjekti = k.getPoseceniObjekti();
+		this.brojSakupljenihBodova = k.getBrojSakupljenihBodova();
+		this.tipKupca = k.getTipKupca();
 	}
 
 	public String getUsername() {
@@ -89,11 +106,11 @@ public class Korisnik {
 		this.prezime = prezime;
 	}
 
-	public String getPol() {
+	public Pol getPol() {
 		return pol;
 	}
 
-	public void setPol(String pol) {
+	public void setPol(Pol pol) {
 		this.pol = pol;
 	}
 
@@ -105,11 +122,11 @@ public class Korisnik {
 		this.datumRodjenja = datumRodjenja;
 	}
 
-	public String getUloga() {
+	public Uloga getUloga() {
 		return uloga;
 	}
 
-	public void setUloga(String uloga) {
+	public void setUloga(Uloga uloga) {
 		this.uloga = uloga;
 	}
 

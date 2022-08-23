@@ -1,46 +1,60 @@
 package dao;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-import java.util.StringTokenizer;
+
+import com.fasterxml.jackson.core.JsonGenerationException;
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.MapperFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import beans.Korisnik;
 
-/***
- * <p>Klasa namenjena da uèita korisnike iz fajla i pruža operacije nad njima (poput pretrage).
- * Korisnici se nalaze u fajlu WebContent/users.txt u obliku: <br>
- * firstName;lastName;email;username;password</p>
- * <p><b>NAPOMENA:</b> Lozinke se u praksi <b>nikada</b> ne snimaju u èistu tekstualnom obliku.</p>
- * @author Lazar
- *
- */
 public class KorisnikDAO {
 	private Map<String, Korisnik> users = new HashMap<>();
+	String path;
 	
+	public KorisnikDAO() {}
 	
-	public KorisnikDAO() {
+	public KorisnikDAO(String contextPath){
+		this.path = contextPath;
+		try {
+			loadUsers(contextPath);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void loadUsers(String contextPath) throws Exception {
+		ObjectMapper mapper = new ObjectMapper();
+		mapper.configure(MapperFeature.ACCEPT_CASE_INSENSITIVE_PROPERTIES, true);
 		
+		List<Korisnik> userData = mapper.readValue(new File(contextPath), new TypeReference<List<Korisnik>>(){});
+		for(Korisnik k : userData) {
+			users.put(k.getUsername(), k);
+		}	
 	}
 	
-	/***
-	 * @param contextPath Putanja do aplikacije u Tomcatu. Može se pristupiti samo iz servleta.
-	 */
-	public KorisnikDAO(String contextPath) {
-		loadUsers(contextPath);
-	}
 	
-	/**
-	 * Vraæa korisnika za prosleðeno korisnièko ime i šifru. Vraæa null ako korisnik ne postoji
-	 * @param username
-	 * @param password
-	 * @return
-	 */
+	public String readFileAsString(String file)throws Exception
+    {
+        return new String(Files.readAllBytes(Paths.get(file)));
+    }
+	
 	public Korisnik find(String username, String password) {
 		if (!users.containsKey(username)) {
 			return null;
@@ -52,52 +66,26 @@ public class KorisnikDAO {
 		return user;
 	}
 	
+	public void addUser(Korisnik user) {
+		this.users.put(user.getUsername(),user);
+	}
+	
+	public Korisnik getByUsername(String username) {
+		return users.get(username);
+	}
+	
 	public Collection<Korisnik> findAll() {
 		return users.values();
 	}
 	
-	/**
-	 * Uèitava korisnike iz WebContent/users.txt fajla i dodaje ih u mapu {@link #users}.
-	 * Kljuè je korisnièko ime korisnika.
-	 * @param contextPath Putanja do aplikacije u Tomcatu
-	 */
-	private void loadUsers(String contextPath) {
-		BufferedReader in = null;
-		try {
-			
-			File file = new File(contextPath + "/data/users.txt");
-			in = new BufferedReader(new FileReader(file));
-			String line;
-			StringTokenizer st;
-			while ((line = in.readLine()) != null) {
-				line = line.trim();
-				if (line.equals("") || line.indexOf('#') == 0)
-					continue;
-				st = new StringTokenizer(line, ";");
-				while (st.hasMoreTokens()) {
-					String username = st.nextToken().trim();
-					String password = st.nextToken().trim();
-					String firstName = st.nextToken().trim();
-					String lastName = st.nextToken().trim();
-					String gender = st.nextToken().trim();
-					String dateOfBirth = st.nextToken().trim();	
-					SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-					Date convertedCurrentDate = sdf.parse(dateOfBirth);
-					String role = st.nextToken().trim();
-					users.put(username, new Korisnik(username, password, firstName, lastName, gender, convertedCurrentDate, role));
-				}
-				
-			}
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		} finally {
-			if (in != null) {
-				try {
-					in.close();
-				}
-				catch (Exception e) { }
-			}
+	public void saveChanges() throws JsonGenerationException, JsonMappingException, IOException {
+		ObjectMapper mapper = new ObjectMapper();
+		mapper.configure(MapperFeature.ACCEPT_CASE_INSENSITIVE_PROPERTIES, true);
+		
+		List<Korisnik> userList  = new ArrayList<>();
+		for(Map.Entry<String, Korisnik> entry : users.entrySet()) {
+			userList.add(new Korisnik(entry.getValue()));
 		}
+		mapper.writeValue(new File(path), userList);
 	}
-	
 }
