@@ -40,8 +40,7 @@ public class Korisnik {
 	}
 
 	public Korisnik(String username, String sifra, String ime, String prezime, String pol, Date datumRodjenja,
-			String uloga, List<IstorijaTreninga> istorijaTreninga, SportskiObjekat sportskiObjekat, Clanarina clanarina,
-			List<SportskiObjekat> poseceniObjekti, int brojSakupljenihBodova, TipKupca tipKupca) {
+			String uloga) {
 		super();
 		this.username = username;
 		this.sifra = sifra;
@@ -50,12 +49,12 @@ public class Korisnik {
 		this.pol = pol;
 		this.datumRodjenja = datumRodjenja;
 		this.uloga = uloga;
-		this.istorijaTreninga = istorijaTreninga;
-		this.sportskiObjekat = sportskiObjekat;
-		this.clanarina = clanarina;
-		this.poseceniObjekti = poseceniObjekti;
-		this.brojSakupljenihBodova = brojSakupljenihBodova;
-		this.tipKupca = tipKupca;
+		this.istorijaTreninga = new ArrayList<IstorijaTreninga>();
+		this.sportskiObjekat = null;
+		this.clanarina = null;
+		this.poseceniObjekti = new ArrayList<SportskiObjekat>();
+		this.brojSakupljenihBodova = 0;
+		this.tipKupca = null;
 	}
 
 	public String getUsername() {
