@@ -1,4 +1,4 @@
-Vue.component("welcome",{
+Vue.component("home",{
 	data(){
         return{
 			loggedUser : null,
@@ -6,7 +6,7 @@ Vue.component("welcome",{
     },
 	template:
 	`	<div>
-			<navbar-guest></navbar-guest>
+			<navbar></navbar>
 			
 		</div>
 	`
@@ -16,7 +16,6 @@ Vue.component("welcome",{
 	}
 	,
 	mounted(){
-		window.localStorage.clear();
 		this.loggedUser = JSON.parse(window.localStorage.getItem("loggedUser"));
 	}
 })

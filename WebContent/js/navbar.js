@@ -1,4 +1,4 @@
-Vue.component("navbar-guest",{
+Vue.component("navbar",{
 	data(){
         return{
 			
@@ -17,8 +17,11 @@ Vue.component("navbar-guest",{
       					<li class="nav-item mx-2">
         					<a class="nav-link" href="#">Treninzi</a>
       					</li>   
+      					<li class="nav-item mx-2">
+        					<a class="nav-link" href="#">Profil</a>
+      					</li>   
       					<li class="nav-item ms-5">
-        					<button class="btn btn-outline-success" @click="$router.push('login')">Logovanje</button>
+        					<button class="btn btn-outline-success" v-on:click="logout()">Izlogovanje</button>
       					</li>  
     				</ul>
   				</div>
@@ -28,6 +31,11 @@ Vue.component("navbar-guest",{
 	`
 	,
 	methods:{
+			logout:function(){
+			console.log("logging out...")
+			window.localStorage.clear();
+			this.$router.push('/');
+		}
 
 	}
 	,

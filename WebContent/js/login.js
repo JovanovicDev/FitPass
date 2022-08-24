@@ -50,7 +50,7 @@ Vue.component("login",{
 				if(res.status !== 204){
 					window.localStorage.setItem('loggedUser', JSON.stringify(res.data));
 					this.loginError = false;
-					this.$router.push('/');
+					this.$router.push('/home');
 					return;
 				}
 				this.loginError = true;				
