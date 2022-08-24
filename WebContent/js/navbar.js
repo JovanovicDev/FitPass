@@ -18,7 +18,7 @@ Vue.component("navbar",{
         					<a class="nav-link" href="#">Treninzi</a>
       					</li>   
       					<li class="nav-item mx-2">
-        					<a class="nav-link" href="#">Profil</a>
+        					<button class="btn btn-outline-success" @click="$router.push('/profile')">Profil</button>
       					</li>   
       					<li class="nav-item ms-5">
         					<button class="btn btn-outline-success" v-on:click="logout()">Izlogovanje</button>
