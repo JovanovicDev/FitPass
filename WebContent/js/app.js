@@ -5,6 +5,7 @@ const NavbarGuest = {template: '<navbar-guest></navbar-guest>'}
 const Navbar = {template: '<navbar></navbar>'}
 const Home = {template: '<home></home>'}
 const Profile = {template: '<profile></profile>'}
+const ProfileSidebar = {template: '<profile-sidebar></profile-sidebar>'}
 
 const router = new VueRouter({
 	mode:'hash',

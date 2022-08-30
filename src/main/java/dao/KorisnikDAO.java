@@ -78,6 +78,11 @@ public class KorisnikDAO {
 		return users.values();
 	}
 	
+	public void update(Korisnik user) throws JsonGenerationException, JsonMappingException, IOException {
+		users.put(user.getUsername(), user);
+		saveChanges();
+	}
+	
 	public void saveChanges() throws JsonGenerationException, JsonMappingException, IOException {
 		ObjectMapper mapper = new ObjectMapper();
 		mapper.configure(MapperFeature.ACCEPT_CASE_INSENSITIVE_PROPERTIES, true);

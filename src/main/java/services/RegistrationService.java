@@ -56,11 +56,8 @@ public class RegistrationService {
 		if (userExists != null) {
 			return Response.status(400).entity("User already exists").build();
 		}
-
-		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-		Date date = formatter.parse(values.get("dateOfBirth"));
 		
-		Korisnik newuser = new Korisnik(values.get("username"), values.get("password"), values.get("name"), values.get("lastName"), Pol.valueOf(values.get("gender")), date);
+		Korisnik newuser = new Korisnik(values.get("username"), values.get("password"), values.get("name"), values.get("lastName"), Pol.valueOf(values.get("gender")), values.get("dateOfBirth"));
 
 		userDao.addUser(newuser);
 		String jsonString = mapper.writeValueAsString(newuser);

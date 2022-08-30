@@ -1,9 +1,16 @@
 package beans;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
+import utils.LocalDateDeserializer;
+import utils.LocalDateSerializer;
 
 public class Korisnik {
 
@@ -12,7 +19,7 @@ public class Korisnik {
 	private String ime;
 	private String prezime;
 	private Pol pol;
-	private Date datumRodjenja;
+	private String datumRodjenja;
 	private Uloga uloga; //Administrator, Menadzer, Trener, Kupac
 	//Samo za ulogu Trener
 	private List<IstorijaTreninga> istorijaTreninga; //lista prethodnih treninga
@@ -40,7 +47,7 @@ public class Korisnik {
 		this.tipKupca = null;
 	}
 
-	public Korisnik(String username, String sifra, String ime, String prezime, Pol pol, Date datumRodjenja) {
+	public Korisnik(String username, String sifra, String ime, String prezime, Pol pol, String datumRodjenja) {
 		super();
 		this.username = username;
 		this.sifra = sifra;
@@ -114,11 +121,11 @@ public class Korisnik {
 		this.pol = pol;
 	}
 
-	public Date getDatumRodjenja() {
+	public String getDatumRodjenja() {
 		return datumRodjenja;
 	}
 
-	public void setDatumRodjenja(Date datumRodjenja) {
+	public void setDatumRodjenja(String datumRodjenja) {
 		this.datumRodjenja = datumRodjenja;
 	}
 
