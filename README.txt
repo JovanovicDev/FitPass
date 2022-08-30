@@ -1,8 +1,8 @@
 - omoguciti prikaz razlicitih stvari na osnovu uloge korisnika
 
-- perzistencija podataka na serveru?
++ perzistencija podataka na serveru?
 
-- profili korisnika
++ profili korisnika
 
 - administrator: pregled svih registrovanih korisnika
 
