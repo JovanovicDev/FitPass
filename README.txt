@@ -1,10 +1,10 @@
-- omoguciti prikaz razlicitih stvari na osnovu uloge korisnika
++ omoguciti prikaz razlicitih stvari na osnovu uloge korisnika
 
 + perzistencija podataka na serveru?
 
 + profili korisnika
 
-- administrator: pregled svih registrovanih korisnika
++ administrator: pregled svih registrovanih korisnika
 
 - administrator: kombinovana pretraga korisnika po ime/prezime/korisnicko ime, sortiranje (rastuci i opadajuci kriterijum) po ime/prezime/korisnicko ime/broj bodova i filtriranje po uloga/tip
 
