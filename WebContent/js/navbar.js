@@ -1,21 +1,24 @@
 Vue.component("navbar",{
 	data(){
         return{
-			
+			loggedUser: null,
         }
     },
 	template:
 	`	
 		<div>
 			<nav class="navbar navbar-expand-lg navbar-light bg-light px-5">
-  				<a class="navbar-brand" href="#">FitPass</a>
+  				<button class="btn btn-outline-success" @click="$router.push('/home')">Početna</button>
 				<div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
     				<ul class="navbar-nav">
+    					<li class="nav-item mx-2" v-if="this.loggedUser.uloga == 'ADMIN'">
+    						<button class="btn btn-outline-success" @click="$router.push('/users')">Korisnici</button>
+    					</li>
      					<li class="nav-item mx-2">
-       						<a class="nav-link" href="#">Sportski objekti</a>
+       						<button class="btn btn-outline-success" @click="$router.push('/')">Sportski objekti</button>
      					</li>    
       					<li class="nav-item mx-2">
-        					<a class="nav-link" href="#">Treninzi</a>
+        					<button class="btn btn-outline-success" @click="$router.push('/')">Treninzi</button>
       					</li>   
       					<li class="nav-item mx-2">
         					<button class="btn btn-outline-success" @click="$router.push('/profile')">Profil</button>
@@ -32,7 +35,6 @@ Vue.component("navbar",{
 	,
 	methods:{
 			logout:function(){
-			console.log("logging out...")
 			window.localStorage.clear();
 			this.$router.push('/');
 		}
@@ -40,6 +42,6 @@ Vue.component("navbar",{
 	}
 	,
 	mounted(){		
-		
+		this.loggedUser = JSON.parse(window.localStorage.getItem('loggedUser'));
 	}
 })

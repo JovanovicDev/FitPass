@@ -25,13 +25,13 @@ Vue.component("registration",{
 						<h1>Registracija</h1>
 						<hr>
 						<label for="username"><b>Korisničko ime</b></label>
-						<input type="text" class="form-control" id="floatingInput" placeholder="Korisničko ime" name="username" v-model="form.username" required>
+						<input type="text" class="form-control" placeholder="Korisničko ime" name="username" v-model="form.username" required>
 						<br>
 						<label for="name"><b>Ime</b></label>
-						<input type="text" class="form-control" id="floatingInput" placeholder="Ime" name="name" v-model="form.name" required>
+						<input type="text" class="form-control" placeholder="Ime" name="name" v-model="form.name" required>
 						<br>
 						<label for="lastname"><b>Prezime</b></label>
-						<input type="text" class="form-control" id="floatingInput" placeholder="Prezime" name="lastname" v-model="form.lastName" required>
+						<input type="text" class="form-control" placeholder="Prezime" name="lastname" v-model="form.lastName" required>
 						<br>
 						<label for="gender"><b>Pol</b>&nbsp;&nbsp;&nbsp;</label>
 						<select name="gender" v-model="form.gender" class="btn btn-primary" required>
@@ -40,13 +40,13 @@ Vue.component("registration",{
 						</select>
 						<br><br>
 						<label for="date"><b>Datum rođenja</b></label>
-						<input type="date" class="form-control" id="floatingInput" placeholder="Datum rođenja" name="date" v-model="form.dateOfBirth" required>
+						<input type="date" class="form-control" placeholder="Datum rođenja" name="date" v-model="form.dateOfBirth" required>
 						<br>
 						<label for="password"><b>Šifra</b></label>
-						<input type="password" class="form-control" id="floatingInput" placeholder="Šifra" name="password"  v-model="form.password" required>
+						<input type="password" class="form-control" placeholder="Šifra" name="password"  v-model="form.password" required>
 						<br>
 						<label for="confirm"><b>Potvrda šifre</b></label>
-						<input type="password" class="form-control" id="floatingInput" placeholder="Potvrda šifre" name="confirm" v-model="form.confirm" required>
+						<input type="password" class="form-control" placeholder="Potvrda šifre" name="confirm" v-model="form.confirm" required>
 						<hr>
 						<button type="submit" class="btn-lg btn-primary"><strong>Registruj se</strong></button>
 						<p>Već imate nalog? <a href="#/">Ulogujte se</a>.</p>

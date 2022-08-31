@@ -49,7 +49,6 @@ public class KorisnikDAO {
 		}	
 	}
 	
-	
 	public String readFileAsString(String file)throws Exception
     {
         return new String(Files.readAllBytes(Paths.get(file)));

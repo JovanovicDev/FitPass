@@ -23,13 +23,13 @@ Vue.component("Profile",{
 						<h1>Lični podaci</h1>
 						<hr>
 						<label for="username"><b>Korisničko ime</b></label>
-						<input type="text" class="form-control" id="floatingInput" name="username" v-model="loggedUser.username">
+						<input type="text" class="form-control" name="username" v-model="loggedUser.username">
 						<br>
 						<label for="name"><b>Ime</b></label>
-						<input type="text" class="form-control" id="floatingInput" placeholder="Ime" name="name" v-model="loggedUser.ime">
+						<input type="text" class="form-control" placeholder="Ime" name="name" v-model="loggedUser.ime">
 						<br>
 						<label for="lastname"><b>Prezime</b></label>
-						<input type="text" class="form-control" id="floatingInput" placeholder="Prezime" name="lastname" v-model="loggedUser.prezime">
+						<input type="text" class="form-control" placeholder="Prezime" name="lastname" v-model="loggedUser.prezime">
 						<br>
 						<label for="gender"><b>Pol</b>&nbsp;&nbsp;&nbsp;</label>
 						<select name="gender" v-model="loggedUser.pol" class="btn btn-primary">
@@ -38,13 +38,13 @@ Vue.component("Profile",{
 						</select>
 						<br><br>
 						<label for="date"><b>Datum rođenja</b></label>
-						<input type="date" class="form-control" id="floatingInput" placeholder="Datum rođenja" name="date" v-model="loggedUser.datumRodjenja">
+						<input type="date" class="form-control" placeholder="Datum rođenja" name="date" v-model="loggedUser.datumRodjenja">
 						<br>
 						<label for="password"><b>Šifra</b></label>
-						<input type="password" class="form-control" id="floatingInput" placeholder="Šifra" name="password" v-model="newPassword">
+						<input type="password" class="form-control" placeholder="Šifra" name="password" v-model="newPassword">
 						<br>
 						<label for="confirm"><b>Potvrda šifre</b></label>
-						<input type="password" class="form-control" id="floatingInput" placeholder="Potvrda šifre" name="confirm" v-model="confirmPassword">
+						<input type="password" class="form-control" placeholder="Potvrda šifre" name="confirm" v-model="confirmPassword">
 						<hr>
 						<button type="submit" class="btn-lg btn-primary"><strong>Izmeni podatke</strong></button>
 					</form>
@@ -79,7 +79,7 @@ Vue.component("Profile",{
 		
 		editUser : function () {
 			event.preventDefault();
-			axios.put('rest/user/update', this.loggedUser)
+			axios.put('rest/users/update', this.loggedUser)
 			.then(() => {
 				this.$router.push('/home');
 			})
