@@ -41,7 +41,7 @@ Vue.component("navbar",{
 
 	}
 	,
-	mounted(){		
+	beforeMount(){		
 		this.loggedUser = JSON.parse(window.localStorage.getItem('loggedUser'));
 	}
 })
