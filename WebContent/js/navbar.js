@@ -15,7 +15,7 @@ Vue.component("navbar",{
     						<button class="btn btn-outline-success" @click="$router.push('/users')">Korisnici</button>
     					</li>
      					<li class="nav-item mx-2">
-       						<button class="btn btn-outline-success" @click="$router.push('/')">Sportski objekti</button>
+       						<button class="btn btn-outline-success" @click="$router.push('/sport-facilities')">Sportski objekti</button>
      					</li>    
       					<li class="nav-item mx-2">
         					<button class="btn btn-outline-success" @click="$router.push('/')">Treninzi</button>
