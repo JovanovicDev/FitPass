@@ -7,6 +7,7 @@ import javax.annotation.PostConstruct;
 import javax.servlet.ServletContext;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
@@ -52,4 +53,27 @@ public class UserService {
 		return korisnikDao.findAll();
 	}
 	
+	@GET
+	@Path("/search/{text}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Collection<Korisnik> search(@PathParam("text") String text) {
+		KorisnikDAO korisnikDao = (KorisnikDAO)ctx.getAttribute("userDAO");
+		return korisnikDao.search(text);
+	}
+	
+	@GET
+	@Path("/filterRole/{text}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Collection<Korisnik> filterRole(@PathParam("text") String text) {
+		KorisnikDAO korisnikDao = (KorisnikDAO)ctx.getAttribute("userDAO");
+		return korisnikDao.filterRole(text);
+	}
+	
+	@GET
+	@Path("/filterType/{text}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Collection<Korisnik> filterType(@PathParam("text") String text) {
+		KorisnikDAO korisnikDao = (KorisnikDAO)ctx.getAttribute("userDAO");
+		return korisnikDao.filterType(text);
+	}
 }

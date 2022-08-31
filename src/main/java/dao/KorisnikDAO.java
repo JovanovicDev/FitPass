@@ -92,4 +92,32 @@ public class KorisnikDAO {
 		}
 		mapper.writeValue(new File(path), userList);
 	}
+	
+	public Collection<Korisnik> search(String text){
+		List<Korisnik> newUsers = new ArrayList<Korisnik>();
+		for(Korisnik k : users.values()) {
+			if(k.getUsername().toLowerCase().contains(text.toLowerCase()) 
+					|| k.getIme().toLowerCase().contains(text.toLowerCase()) 
+					|| k.getPrezime().toLowerCase().contains(text.toLowerCase())) {
+				newUsers.add(k);
+			}
+		}
+		return newUsers;
+	}
+	
+	public Collection<Korisnik> filterRole(String text){
+		List<Korisnik> newUsers = new ArrayList<Korisnik>();
+		for(Korisnik k : users.values()) {
+			if(k.getUloga().name().equals(text)) newUsers.add(k);
+		}
+		return newUsers;
+	}
+	
+	public Collection<Korisnik> filterType(String text){
+		List<Korisnik> newUsers = new ArrayList<Korisnik>();
+		for(Korisnik k : users.values()) {
+			if(k.getTipKupca().getIme().equals(text)) newUsers.add(k);
+		}
+		return newUsers;
+	}
 }

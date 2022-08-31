@@ -6,13 +6,13 @@
 
 + administrator: pregled svih registrovanih korisnika
 
-- administrator: kombinovana pretraga korisnika po ime/prezime/korisnicko ime, sortiranje (rastuci i opadajuci kriterijum) po ime/prezime/korisnicko ime/broj bodova i filtriranje po uloga/tip
+- administrator: pretraga korisnika po ime/prezime/korisnicko ime, sortiranje (rastuci i opadajuci kriterijum) po ime/prezime/korisnicko ime/broj bodova i filtriranje po uloga/tip
+
+- prikaz svih sportskih objekata na pocetnoj strani vidljiv svim korisnicima
 
 - menadzer: pregled svog sportskog objekta (trenera koji drze treninge u njemu i kupaca)
 
 - administrator: kreiranje novog sportskog objekta
-
-- prikaz svih sportskih objekata na pocetnoj strani vidljiv svim korisnicima
 
 - pretraga sportskih objekata po nazivu/tipu/lokaciji/prosecnoj oceni, prikazuju se naziv, tip, lokacija, logo, prosecna ocena, radno vreme. omoguciti sortiranje (rastuci i opadajuci kriterijum) prema naziv/lokacija/prosecna ocena i filtriranje prema tip objekta/prikaz samo otvorenih objekata
 
