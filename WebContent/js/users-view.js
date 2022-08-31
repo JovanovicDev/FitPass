@@ -1,13 +1,16 @@
 Vue.component("users-view",{
 	data(){
         return{
-			loggedUser: null,
-			users: null,
+			loggedUser: {},
+			users: [],
 			search: '',	
 			filterRole: '',
-			filterType: '',		
+			filterType: '',
+			currentSort: 'username',
+			currentSortDir: 'asc'		
         }
     },
+	
 	template:
 	`	
 		<div>
@@ -42,16 +45,16 @@ Vue.component("users-view",{
 					</div>
 
 	    			<table border="1" class="table table-responsive">
-			    		<tr bgcolor="lightgrey">
-			    			<th>Korisničko ime</th>
-			    			<th>Ime</th>
-			    			<th>Prezime</th>
+			    		<tr bgcolor="lightgrey" height="2px">
+			    			<th @click="sort('username')"><a class="text-reset text-decoration-none" role="button">Korisničko ime</a></th>
+			    			<th @click="sort('ime')"><a class="text-reset text-decoration-none" role="button">Ime</a></th>
+			    			<th @click="sort('prezime')"><a class="text-reset text-decoration-none" role="button">Prezime</a></th>
 			    			<th>Uloga</th>
 			    			<th>Tip</th>
-			    			<th>Broj bodova</th>
+			    			<th @click="sort('brojSakupljenihBodova')"><a class="text-reset text-decoration-none" role="button">Broj bodova</a></th>
 			    		</tr>
 		    			
-			    		<tr v-for="(u, index) in users">
+			    		<tr v-for="u in sortedUsers">
 			    			<td>{{u.username}}</td>
 			    			<td>{{u.ime}}</td>
 			    			<td>{{u.prezime}}</td>
@@ -93,14 +96,33 @@ Vue.component("users-view",{
 			}		
 		},
 		
+		sort(s){
+			if(s === this.currentSort){
+				this.currentSortDir = this.currentSortDir === 'asc' ? 'desc' : 'asc';
+			}
+			this.currentSort = s;
+		},
+		
 		loadUsers(){
 			axios
           		.get('rest/users/')
           		.then(response => (this.users = response.data))
 		}
 			
-	}
-	,
+	},
+	
+	computed:{
+		sortedUsers(){
+			return this.users.sort((a,b) => {
+				let modifier = 1;
+				if(this.currentSortDir === 'desc') modifier = -1;
+				if(a[this.currentSort] < b[this.currentSort]) return -1 * modifier;
+				if(a[this.currentSort] > b[this.currentSort]) return 1 * modifier;
+				return 0;
+			});
+		}
+	},
+	
 	mounted(){		
 		this.loggedUser = JSON.parse(window.localStorage.getItem('loggedUser'));
 		this.loadUsers();		

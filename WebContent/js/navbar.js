@@ -1,7 +1,7 @@
 Vue.component("navbar",{
 	data(){
         return{
-			loggedUser: null,
+			loggedUser: {},
         }
     },
 	template:

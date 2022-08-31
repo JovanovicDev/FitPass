@@ -6,7 +6,7 @@
 
 + administrator: pregled svih registrovanih korisnika
 
-- administrator: pretraga korisnika po ime/prezime/korisnicko ime, sortiranje (rastuci i opadajuci kriterijum) po ime/prezime/korisnicko ime/broj bodova i filtriranje po uloga/tip
++ administrator: pretraga korisnika po ime/prezime/korisnicko ime, sortiranje (rastuci i opadajuci kriterijum) po ime/prezime/korisnicko ime/broj bodova i filtriranje po uloga/tip
 
 - prikaz svih sportskih objekata na pocetnoj strani vidljiv svim korisnicima
 

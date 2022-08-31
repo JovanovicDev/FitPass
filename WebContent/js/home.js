@@ -1,7 +1,7 @@
 Vue.component("home",{
 	data(){
         return{
-			loggedUser : null,
+			loggedUser : {},
         }
     },
 	template:

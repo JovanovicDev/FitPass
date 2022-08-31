@@ -1,7 +1,7 @@
 Vue.component("Profile",{
 	data(){
         return{
-            loggedUser: null,
+            loggedUser: {},
             newPassword: null,
             confirmPassword: null,
 			passwordError: false,
