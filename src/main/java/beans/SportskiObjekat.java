@@ -2,6 +2,7 @@ package beans;
 
 public class SportskiObjekat {
 
+	private int id;
 	private String naziv;
 	private String tip; //teretana, bazen, sportski centar, plesni studio, ...
 	private String sadrzaj; //grupni, personalni treninzi, sauna, ...
@@ -12,6 +13,7 @@ public class SportskiObjekat {
 	private String radnoVreme; //u formatu XX:XX - XX:XX
 	
 	public SportskiObjekat() {
+		this.id = -1;
 		this.naziv = "";
 		this.tip = "";
 		this.sadrzaj = "";
@@ -22,9 +24,10 @@ public class SportskiObjekat {
 		this.radnoVreme = "";
 	}
 	
-	public SportskiObjekat(String naziv, String tip, String sadrzaj, String status, Lokacija lokacija, String logo,
+	public SportskiObjekat(int id, String naziv, String tip, String sadrzaj, String status, Lokacija lokacija, String logo,
 			double prosecnaOcena, String radnoVreme) {
 		super();
+		this.id = id;
 		this.naziv = naziv;
 		this.tip = tip;
 		this.sadrzaj = sadrzaj;
@@ -38,6 +41,7 @@ public class SportskiObjekat {
 
 	public SportskiObjekat(SportskiObjekat o) {
 		super();
+		this.id = o.getId();
 		this.naziv = o.getNaziv();
 		this.tip = o.getTip();
 		this.sadrzaj = o.getSadrzaj();
@@ -46,6 +50,14 @@ public class SportskiObjekat {
 		this.logo = o.getLogo();
 		this.prosecnaOcena = o.getProsecnaOcena();
 		this.radnoVreme = o.getRadnoVreme();
+	}
+	
+	public int getId() {
+		return id;
+	}
+	
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 	public String getNaziv() {

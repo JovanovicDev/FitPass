@@ -43,7 +43,7 @@ public class SportskiObjekatDAO {
 		
 		List<SportskiObjekat> sportFacilityData = mapper.readValue(new File(contextPath), new TypeReference<List<SportskiObjekat>>(){});
 		for(SportskiObjekat k : sportFacilityData) {
-			sportskiObjekti.put(k.getNaziv(), k);
+			sportskiObjekti.put(Integer.toString(k.getId()), k);
 		}	
 	}
 	
@@ -52,20 +52,20 @@ public class SportskiObjekatDAO {
         return new String(Files.readAllBytes(Paths.get(file)));
     }
 	
-	public SportskiObjekat find(String naziv) {
-		if (!sportskiObjekti.containsKey(naziv)) {
+	public SportskiObjekat find(int id) {
+		if (!sportskiObjekti.containsKey(Integer.toString(id))) {
 			return null;
 		}
-		SportskiObjekat objekat = sportskiObjekti.get(naziv);
+		SportskiObjekat objekat = sportskiObjekti.get(Integer.toString(id));
 		return objekat;
 	}
 	
 	public void addSportFacility(SportskiObjekat objekat) {
-		this.sportskiObjekti.put(objekat.getNaziv(),objekat);
+		sportskiObjekti.put(Integer.toString(objekat.getId()),objekat);
 	}
 	
-	public SportskiObjekat getByNaziv(String naziv) {
-		return sportskiObjekti.get(naziv);
+	public SportskiObjekat getById(int id) {
+		return sportskiObjekti.get(Integer.toString(id));
 	}
 	
 	public Collection<SportskiObjekat> findAll() {	
@@ -75,7 +75,7 @@ public class SportskiObjekatDAO {
 	}
 	
 	public void update(SportskiObjekat objekat) throws JsonGenerationException, JsonMappingException, IOException {
-		sportskiObjekti.put(objekat.getNaziv(), objekat);
+		sportskiObjekti.put(Integer.toString(objekat.getId()),objekat);
 		saveChanges();
 	}
 	

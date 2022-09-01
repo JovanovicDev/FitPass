@@ -18,6 +18,7 @@ Vue.component("sport-facilities-view",{
 					<hr>
 	    			<table border="1" class="table table-responsive">
 			    		<tr bgcolor="lightgrey" height="2px">
+			    			<th>Redni broj</th>
 			    			<th>Logo</th>
 			    			<th>Naziv</th>
 			    			<th>Tip</th>
@@ -29,6 +30,7 @@ Vue.component("sport-facilities-view",{
 			    		</tr>
 		    			
 			    		<tr v-for="s in sportFacilities">
+			    			<td>{{s.id}}</td>
 			    			<td><img height="120px" width="120px" v-bind:src="s.logo"></td>
 			    			<td>{{s.naziv}}</td>
 			    			<td>{{s.tip}}</td>
