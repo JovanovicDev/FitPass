@@ -19,6 +19,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 
 import beans.Korisnik;
+import beans.SportskiObjekat;
 import dao.KorisnikDAO;
 import dao.SportskiObjekatDAO;
 
@@ -79,5 +80,13 @@ public class UserService {
 	public Collection<Korisnik> filterType(@PathParam("text") String text) {
 		KorisnikDAO korisnikDao = (KorisnikDAO)ctx.getAttribute("userDAO");
 		return korisnikDao.filterType(text);
+	}
+	
+	@GET
+	@Path("/getManagersFacility/{text}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public SportskiObjekat getManagersFacility(@PathParam("text") String text) {
+		KorisnikDAO korisnikDao = (KorisnikDAO)ctx.getAttribute("userDAO");
+		return korisnikDao.getManagersFacility(text);
 	}
 }

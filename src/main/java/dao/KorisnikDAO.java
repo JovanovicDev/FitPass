@@ -23,6 +23,7 @@ import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import beans.Korisnik;
+import beans.SportskiObjekat;
 
 public class KorisnikDAO {
 	private Map<String, Korisnik> users = new HashMap<>();
@@ -119,5 +120,10 @@ public class KorisnikDAO {
 			if(k.getTipKupca().getIme().equals(text)) newUsers.add(k);
 		}
 		return newUsers;
+	}
+	
+	public SportskiObjekat getManagersFacility(String username) {
+		Korisnik k = getByUsername(username);
+		return k.getSportskiObjekat();
 	}
 }
