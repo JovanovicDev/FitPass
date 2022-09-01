@@ -29,7 +29,7 @@ Vue.component("sport-facilities-view",{
 			    		</tr>
 		    			
 			    		<tr v-for="s in sportFacilities">
-			    			<td>{{s.logo}}</td>
+			    			<td><img height="120px" width="120px" v-bind:src="s.logo"></td>
 			    			<td>{{s.naziv}}</td>
 			    			<td>{{s.tip}}</td>
 			    			<td>{{s.sadrzaj}}</td>

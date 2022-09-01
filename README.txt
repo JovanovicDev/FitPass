@@ -8,7 +8,7 @@
 
 + administrator: pretraga korisnika po ime/prezime/korisnicko ime, sortiranje (rastuci i opadajuci kriterijum) po ime/prezime/korisnicko ime/broj bodova i filtriranje po uloga/tip
 
-- prikaz svih sportskih objekata na pocetnoj strani vidljiv svim korisnicima
++ prikaz svih sportskih objekata na pocetnoj strani vidljiv svim korisnicima
 
 - menadzer: pregled svog sportskog objekta (trenera koji drze treninge u njemu i kupaca)
 

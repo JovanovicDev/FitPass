@@ -20,6 +20,7 @@ import javax.ws.rs.GET;
 
 import beans.Korisnik;
 import dao.KorisnikDAO;
+import dao.SportskiObjekatDAO;
 
 @Path("/users")
 public class UserService {
@@ -33,6 +34,9 @@ public class UserService {
 		if (ctx.getAttribute("userDAO") == null) {
 	    	String contextPath = ctx.getRealPath("/data/users.json");
 			ctx.setAttribute("userDAO", new KorisnikDAO(contextPath));
+			
+			String pathForSportFacilities = ctx.getRealPath("/data/sportFacilities.json");
+			ctx.setAttribute("sportFacilityDAO", new SportskiObjekatDAO(pathForSportFacilities));
 		}
 	}
 	

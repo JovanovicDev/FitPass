@@ -6,9 +6,13 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -64,8 +68,10 @@ public class SportskiObjekatDAO {
 		return sportskiObjekti.get(naziv);
 	}
 	
-	public Collection<SportskiObjekat> findAll() {
-		return sportskiObjekti.values();
+	public Collection<SportskiObjekat> findAll() {	
+		Map<String, SportskiObjekat> sortedMap = sortMap();
+		List<SportskiObjekat> invertedList = invertResults(sortedMap);
+		return invertedList;
 	}
 	
 	public void update(SportskiObjekat objekat) throws JsonGenerationException, JsonMappingException, IOException {
@@ -83,4 +89,22 @@ public class SportskiObjekatDAO {
 		}
 		mapper.writeValue(new File(path), sportFacilityList);
 	}
+	
+	private Map<String, SportskiObjekat> sortMap(){
+		Map<String, SportskiObjekat> resultSet = sportskiObjekti.entrySet()
+				.stream()
+				.sorted(Comparator.comparing(e -> e.getValue().getStatus()))
+				.collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (left, right) -> left, LinkedHashMap::new));
+		return resultSet;
+	}
+	
+	private List<SportskiObjekat> invertResults(Map<String, SportskiObjekat> resultSet) {
+		List<SportskiObjekat> resultList = new ArrayList<SportskiObjekat>();
+		for (SportskiObjekat o : resultSet.values()) {
+		    resultList.add(o);
+		}
+		Collections.reverse(resultList);
+		return resultList;
+	}
+	
 }
