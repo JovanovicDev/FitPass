@@ -28,9 +28,15 @@ Vue.component("sport-facilities-view",{
 			    			<th>Prosečna ocena</th>
 			    		</tr>
 		    			
-			    		<tr v-for="s in sortedSportFacilities">
+			    		<tr v-for="s in sportFacilities">
 			    			<td>{{s.logo}}</td>
-			    			
+			    			<td>{{s.naziv}}</td>
+			    			<td>{{s.tip}}</td>
+			    			<td>{{s.sadrzaj}}</td>
+			    			<td>{{s.status}}</td>
+			    			<td>{{s.lokacija.adresa}}</td>
+			    			<td>{{s.radnoVreme}}</td>
+			    			<td>{{s.prosecnaOcena}}</td>			    			
 			    		</tr>
 		    		</table>
 				</div>
@@ -41,10 +47,27 @@ Vue.component("sport-facilities-view",{
 	`
 	,
 	methods:{
-			
+			loadSportFacilities(){
+			axios
+          		.get('rest/sportFacilities/')
+          		.then(response => (this.sportFacilities = response.data))
+		}
+	},
+	
+	computed:{
+		sortedSportFacilities(){
+			return this.sportFacilities.sort((a,b) => {
+				let modifier = 1;
+				if(this.currentSortDir === 'desc') modifier = -1;
+				if(a[this.currentSort] < b[this.currentSort]) return -1 * modifier;
+				if(a[this.currentSort] > b[this.currentSort]) return 1 * modifier;
+				return 0;
+			});
+		}
 	},
 	
 	mounted(){		
 		this.loggedUser = JSON.parse(window.localStorage.getItem('loggedUser'));
+		this.loadSportFacilities();
 	}
 })

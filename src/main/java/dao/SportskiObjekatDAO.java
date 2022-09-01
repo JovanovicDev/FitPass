@@ -1,0 +1,86 @@
+package dao;
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import com.fasterxml.jackson.core.JsonGenerationException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.MapperFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import beans.SportskiObjekat;
+
+public class SportskiObjekatDAO {
+	private Map<String, SportskiObjekat> sportskiObjekti = new HashMap<>();
+	String path;
+	
+	public SportskiObjekatDAO() {}
+	
+	public SportskiObjekatDAO(String contextPath){
+		this.path = contextPath;
+		try {
+			loadSportFacilities(contextPath);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void loadSportFacilities(String contextPath) throws Exception {
+		ObjectMapper mapper = new ObjectMapper();
+		mapper.configure(MapperFeature.ACCEPT_CASE_INSENSITIVE_PROPERTIES, true);
+		
+		List<SportskiObjekat> sportFacilityData = mapper.readValue(new File(contextPath), new TypeReference<List<SportskiObjekat>>(){});
+		for(SportskiObjekat k : sportFacilityData) {
+			sportskiObjekti.put(k.getNaziv(), k);
+		}	
+	}
+	
+	public String readFileAsString(String file)throws Exception
+    {
+        return new String(Files.readAllBytes(Paths.get(file)));
+    }
+	
+	public SportskiObjekat find(String naziv) {
+		if (!sportskiObjekti.containsKey(naziv)) {
+			return null;
+		}
+		SportskiObjekat objekat = sportskiObjekti.get(naziv);
+		return objekat;
+	}
+	
+	public void addSportFacility(SportskiObjekat objekat) {
+		this.sportskiObjekti.put(objekat.getNaziv(),objekat);
+	}
+	
+	public SportskiObjekat getByNaziv(String naziv) {
+		return sportskiObjekti.get(naziv);
+	}
+	
+	public Collection<SportskiObjekat> findAll() {
+		return sportskiObjekti.values();
+	}
+	
+	public void update(SportskiObjekat objekat) throws JsonGenerationException, JsonMappingException, IOException {
+		sportskiObjekti.put(objekat.getNaziv(), objekat);
+		saveChanges();
+	}
+	
+	public void saveChanges() throws JsonGenerationException, JsonMappingException, IOException {
+		ObjectMapper mapper = new ObjectMapper();
+		mapper.configure(MapperFeature.ACCEPT_CASE_INSENSITIVE_PROPERTIES, true);
+		
+		List<SportskiObjekat> sportFacilityList  = new ArrayList<>();
+		for(Map.Entry<String, SportskiObjekat> entry : sportskiObjekti.entrySet()) {
+			sportFacilityList.add(new SportskiObjekat(entry.getValue()));
+		}
+		mapper.writeValue(new File(path), sportFacilityList);
+	}
+}

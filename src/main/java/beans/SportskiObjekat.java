@@ -35,6 +35,19 @@ public class SportskiObjekat {
 		this.radnoVreme = radnoVreme;
 	}
 
+
+	public SportskiObjekat(SportskiObjekat o) {
+		super();
+		this.naziv = o.getNaziv();
+		this.tip = o.getTip();
+		this.sadrzaj = o.getSadrzaj();
+		this.status = o.getStatus();
+		this.lokacija = o.getLokacija();
+		this.logo = o.getLogo();
+		this.prosecnaOcena = o.getProsecnaOcena();
+		this.radnoVreme = o.getRadnoVreme();
+	}
+	
 	public String getNaziv() {
 		return naziv;
 	}
