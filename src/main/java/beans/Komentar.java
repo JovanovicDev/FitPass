@@ -2,26 +2,37 @@ package beans;
 
 public class Komentar {
 	
+	private int id;
 	private Korisnik kupac;
 	private SportskiObjekat sportskiObjekat;
 	private String tekst;
 	private int ocena; //na skali od 1 do 5
 	
 	public Komentar() {
+		this.id = 0;
 		this.kupac = null;
 		this.sportskiObjekat = null;
 		this.tekst = "";
 		this.ocena = 0;
 	}
 
-	public Komentar(Korisnik kupac, SportskiObjekat sportskiObjekat, String tekst, int ocena) {
+	public Komentar(int id, Korisnik kupac, SportskiObjekat sportskiObjekat, String tekst, int ocena) {
 		super();
+		this.id = id;
 		this.kupac = kupac;
 		this.sportskiObjekat = sportskiObjekat;
 		this.tekst = tekst;
 		this.ocena = ocena;
 	}
 
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+	
 	public Korisnik getKupac() {
 		return kupac;
 	}

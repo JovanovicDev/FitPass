@@ -2,6 +2,7 @@ package beans;
 
 public class Trening {
 
+	private int id;
 	private String naziv;
 	private String tip; //grupni, personalni, teretana, ...
 	private SportskiObjekat sportskiObjekat;
@@ -11,6 +12,7 @@ public class Trening {
 	private String slika; //slika, stoji String za sada, mozda putanja do slike?
 	
 	public Trening() {
+		this.id = 0;
 		this.naziv = "";
 		this.tip = "";
 		this.sportskiObjekat = null;
@@ -20,9 +22,10 @@ public class Trening {
 		this.slika = "";
 	}
 
-	public Trening(String naziv, String tip, SportskiObjekat sportskiObjekat, int trajanje, Korisnik trener,
+	public Trening(int id, String naziv, String tip, SportskiObjekat sportskiObjekat, int trajanje, Korisnik trener,
 			String opis, String slika) {
 		super();
+		this.id = id;
 		this.naziv = naziv;
 		this.tip = tip;
 		this.sportskiObjekat = sportskiObjekat;
@@ -30,6 +33,14 @@ public class Trening {
 		this.trener = trener;
 		this.opis = opis;
 		this.slika = slika;
+	}
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getNaziv() {

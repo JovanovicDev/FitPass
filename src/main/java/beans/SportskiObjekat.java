@@ -13,7 +13,7 @@ public class SportskiObjekat {
 	private String radnoVreme; //u formatu XX:XX - XX:XX
 	
 	public SportskiObjekat() {
-		this.id = -1;
+		this.id = 0;
 		this.naziv = "";
 		this.tip = "";
 		this.sadrzaj = "";
