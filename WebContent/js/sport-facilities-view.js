@@ -54,18 +54,6 @@ Vue.component("sport-facilities-view",{
 		}
 	},
 	
-	computed:{
-		sortedSportFacilities(){
-			return this.sportFacilities.sort((a,b) => {
-				let modifier = 1;
-				if(this.currentSortDir === 'desc') modifier = -1;
-				if(a[this.currentSort] < b[this.currentSort]) return -1 * modifier;
-				if(a[this.currentSort] > b[this.currentSort]) return 1 * modifier;
-				return 0;
-			});
-		}
-	},
-	
 	mounted(){		
 		this.loggedUser = JSON.parse(window.localStorage.getItem('loggedUser'));
 		this.loadSportFacilities();
