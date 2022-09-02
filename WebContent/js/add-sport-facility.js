@@ -14,7 +14,8 @@ Vue.component("add-sport-facility",{
                 prosecnaOcena: '',
                 radnoVreme: ''		
             },
-			submitError:false
+			submitError:false,
+			previewImage: null,
         }
     },
 	
@@ -52,9 +53,17 @@ Vue.component("add-sport-facility",{
 						<label for="adress"><b>Adresa</b></label>
 						<input type="text" class="form-control" placeholder="Adresa" name="adress" v-model="form.adresa" required>
 						<br>
-						<label for="logo"><b>Logo</b></label>
-						<input type="text" class="form-control" placeholder="Logo PH" name="logo" v-model="form.logo" required>
 						
+						<label for="logo" class="mb-1"><b>Logo</b></label>
+						<div class="row">
+							<div class="col">
+								<input type="file" accept="image/png" name="logo" @change=uploadImage required>
+							</div>
+							<div class="col">
+								<img v-bind:src="this.previewImage" class="d-flex" width="120px" height="120px"/>
+							</div>
+						</div>
+												
 						<br>
 						<label for="averageGrade"><b>Prosečna ocena</b></label>
 						<input type="text" class="form-control" placeholder="Prosečna ocena" name="averageGrade" v-model="form.prosecnaOcena" required>
@@ -83,6 +92,15 @@ Vue.component("add-sport-facility",{
                  .catch(() => {
                      this.submitError = true;
                  });			
+		},
+		
+		uploadImage(e){
+			const image = e.target.files[0];
+			const reader = new FileReader();
+			reader.readAsDataURL(image);
+			reader.onload = e => {
+				this.previewImage = e.target.result;
+			};
 		}
 	},	
 	mounted(){		

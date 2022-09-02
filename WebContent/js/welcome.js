@@ -7,7 +7,11 @@ Vue.component("welcome",{
 	template:
 	`	<div>
 			<navbar-guest></navbar-guest>
-			
+			<div class="d-flex justify-content-center align-items-center" style="height: calc(100vh - 56px);">
+			  <div>
+			     <img src="images/fitpass.png"/>
+			  </div>
+			</div>
 		</div>
 	`
 	,
