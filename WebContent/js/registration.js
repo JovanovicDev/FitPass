@@ -34,7 +34,7 @@ Vue.component("registration",{
 						<input type="text" class="form-control" placeholder="Prezime" name="lastname" v-model="form.lastName" required>
 						<br>
 						<label for="gender"><b>Pol</b>&nbsp;&nbsp;&nbsp;</label>
-						<select name="gender" v-model="form.gender" class="btn btn-primary" required>
+						<select name="gender" v-model="form.gender" class="btn btn-outline-success" required>
 							<option value="MUSKI">Muški</option>
 							<option value="ZENSKI">Ženski</option>
 						</select>
@@ -48,7 +48,7 @@ Vue.component("registration",{
 						<label for="confirm"><b>Potvrda šifre</b></label>
 						<input type="password" class="form-control" placeholder="Potvrda šifre" name="confirm" v-model="form.confirm" required>
 						<hr>
-						<button type="submit" class="btn-lg btn-primary"><strong>Registruj se</strong></button>
+						<button type="submit" class="btn btn-outline-success"><strong>Registruj se</strong></button>
 						<p>Već imate nalog? <a href="#/">Ulogujte se</a>.</p>
 					</form>
 					<p v-if="passwordError">

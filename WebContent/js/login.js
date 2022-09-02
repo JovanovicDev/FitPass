@@ -26,7 +26,7 @@ Vue.component("login",{
 								 <label for="floatingPassword">Šifra</label>
 								<br>
 							</div>
-							<button type="submit" class="btn btn-primary align-center"><strong>Uloguj se</strong></button>
+							<button type="submit" class="btn btn-outline-success align-center"><strong>Uloguj se</strong></button>
 							<p class="mt-2">Nemate nalog? <a href="#/registration">Registrujte se</a>.</p>
 						</form>
 						<p v-if="loginError" class="error" style="color:red">

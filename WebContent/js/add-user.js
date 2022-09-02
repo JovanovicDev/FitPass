@@ -22,9 +22,8 @@ Vue.component("add-user",{
 		<div>
 			<navbar></navbar>
 			<div class="container my-5">
-		 	<div class="row">
-			    <div class="col"></div>
-			    <div class="col align-items-center">
+		 	<div class="row justify-content-center">
+			    <div class="col-auto align-items-center">
 					<form v-on:submit.prevent="checkForm">
 						<h1>Registracija novog člana</h1>
 						<hr>
@@ -38,7 +37,7 @@ Vue.component("add-user",{
 						<input type="text" class="form-control" placeholder="Prezime" name="lastname" v-model="form.lastName" required>
 						<br>
 						<label for="gender"><b>Pol</b>&nbsp;&nbsp;&nbsp;</label>
-						<select name="gender" v-model="form.gender" class="btn btn-primary" required>
+						<select name="gender" v-model="form.gender" class="btn btn-outline-success" required>
 							<option value="MUSKI">Muški</option>
 							<option value="ZENSKI">Ženski</option>
 						</select>
@@ -47,7 +46,7 @@ Vue.component("add-user",{
 						<input type="date" class="form-control" placeholder="Datum rođenja" name="date" v-model="form.dateOfBirth" required>
 						<br>
 						<label for="role"><b>Uloga</b>&nbsp;&nbsp;&nbsp;</label>
-						<select name="role" v-model="form.role" class="btn btn-primary" required>
+						<select name="role" v-model="form.role" class="btn btn-outline-success" required>
 							<option value="MENADZER">Menadžer</option>
 							<option value="TRENER">Trener</option>
 						</select>
@@ -58,7 +57,7 @@ Vue.component("add-user",{
 						<label for="confirm"><b>Potvrda šifre</b></label>
 						<input type="password" class="form-control" placeholder="Potvrda šifre" name="confirm" v-model="form.confirm" required>
 						<hr>
-						<button type="submit" class="btn-lg btn-primary"><strong>Kreiraj</strong></button>
+						<button type="submit" class="btn btn-outline-success"><strong>Kreiraj</strong></button>
 					</form>
 					<p v-if="passwordError">
 					    <b>Šifre se ne poklapaju!</b>
@@ -67,7 +66,6 @@ Vue.component("add-user",{
 					    <b>Korisničko ime već postoji!</b>
 					</p>
 			    </div>
-			    <div class="col"></div>
 		 	</div>
 		</div>
 		</div>
@@ -81,9 +79,8 @@ Vue.component("add-user",{
 			}
 			else{
 				axios.post('rest/registration', this.form)
-                 .then((res) => {
-					window.localStorage.setItem('loggedUser', JSON.stringify(res.data));
-					this.$router.push('/');
+                 .then(() => {
+					this.$router.push('/users');
                  })
                  .catch(() => {
                      this.submitError = true;

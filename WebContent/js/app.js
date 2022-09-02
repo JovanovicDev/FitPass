@@ -10,6 +10,7 @@ const UsersView = {template: '<users-view></users-view>'}
 const SportFacilitiesView = {template: '<sport-facilities-view></sport-facilities-view>'}
 const SportFacilityView = {template: '<sport-facility-view></sport-facility-view>'}
 const AddUser = {template: '<add-user></add-user>'}
+const AddSportFacility = {template: '<add-sport-facility></add-sport-facility>'}
 
 const router = new VueRouter({
 	mode:'hash',
@@ -22,7 +23,8 @@ const router = new VueRouter({
 		{path:'/users', component:UsersView},
 		{path:'/sport-facilities', component:SportFacilitiesView},
 		{path:'/sport-facility', component:SportFacilityView},
-		{path:'/add-user', component:AddUser}
+		{path:'/add-user', component:AddUser},
+		{path:'/add-sport-facility', component:AddSportFacility}
 	]
 });
 

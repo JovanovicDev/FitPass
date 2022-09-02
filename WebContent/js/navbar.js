@@ -2,6 +2,7 @@ Vue.component("navbar",{
 	data(){
         return{
 			loggedUser: {},
+			adminLoggedIn: false,
         }
     },
 	template:
@@ -11,7 +12,7 @@ Vue.component("navbar",{
   				<button class="btn btn-outline-success" @click="$router.push('/home')">Početna</button>
 				<div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
     				<ul class="navbar-nav">
-    					<li class="nav-item mx-2" v-if="this.loggedUser.uloga == 'ADMIN'">
+    					<li class="nav-item mx-2" v-if="adminLoggedIn">
     						<button class="btn btn-outline-success" @click="$router.push('/users')">Korisnici</button>
     					</li>
      					<li class="nav-item mx-2">
@@ -37,11 +38,20 @@ Vue.component("navbar",{
 			logout:function(){
 			window.localStorage.clear();
 			this.$router.push('/');
-		}
+		},
+		
+		checkIfAdminIsLoggedIn(){
+				if(this.loggedUser != null){
+					if(this.loggedUser.uloga == 'ADMIN') this.adminLoggedIn = true;
+				} else {
+					this.adminLoggedIn = false;
+				}
+			}
 
 	}
 	,
 	beforeMount(){		
 		this.loggedUser = JSON.parse(window.localStorage.getItem('loggedUser'));
+		this.checkIfAdminIsLoggedIn();
 	}
 })

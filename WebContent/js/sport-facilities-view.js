@@ -1,8 +1,9 @@
 Vue.component("sport-facilities-view",{
 	data(){
         return{
-			loggedUser: null,
+			loggedUser: {},
 			sportFacilities: [],
+			adminLoggedIn: false,
         }
     },
 	
@@ -14,8 +15,9 @@ Vue.component("sport-facilities-view",{
 			
 			<div class="row justify-content-center my-5 g-0">
 				<div class="col-auto text-center w-75">
-					<h1>Prikaz sportskih objekata</h1>
+					<h1>Sportski objekti</h1>
 					<hr>
+					<button type="button" id="addButton" class="btn btn-outline-success me-2 mb-2" v-if="adminLoggedIn" @click="$router.push('/add-sport-facility')">Dodaj novi</button>
 	    			<table border="1" class="table table-responsive">
 			    		<tr bgcolor="lightgrey" height="2px">
 			    			<th>Logo</th>
@@ -51,11 +53,20 @@ Vue.component("sport-facilities-view",{
 			axios
           		.get('rest/sportFacilities/')
           		.then(response => (this.sportFacilities = response.data))
-		}
+			},
+		
+			checkIfAdminIsLoggedIn(){
+				if(this.loggedUser != null){
+					if(this.loggedUser.uloga == 'ADMIN') this.adminLoggedIn = true;
+				} else {
+					this.adminLoggedIn = false;
+				}
+			}
 	},
 	
 	mounted(){		
 		this.loggedUser = JSON.parse(window.localStorage.getItem('loggedUser'));
+		this.checkIfAdminIsLoggedIn();
 		this.loadSportFacilities();
 	}
 })
