@@ -2,7 +2,9 @@ Vue.component("sport-facility-view",{
 	data(){
         return{
 			loggedUser: null,
-			sportFacility: {}
+			sportFacility: {},
+			adress: '',
+			trainers: []
         }
     },
 	
@@ -14,7 +16,9 @@ Vue.component("sport-facility-view",{
 			<profile-sidebar></profile-sidebar>
 			
 			<div class="container my-5">
-			    <div class="align-items-center vw-50">
+			    <div class="align-items-center text-center vw-50">
+			    	<h1>Prikaz sportskog objekta</h1>
+					<hr>
 			    	<table border="1" class="table table-responsive">
 			    		<tr bgcolor="lightgrey" height="2px">
 			    			<th>Logo</th>
@@ -32,9 +36,27 @@ Vue.component("sport-facility-view",{
 			    			<td>{{this.sportFacility.tip}}</td>
 			    			<td>{{this.sportFacility.sadrzaj}}</td>
 			    			<td>{{this.sportFacility.status}}</td>
-			    			<td>{{this.sportFacility.lokacija.adresa}}</td>
+			    			<td>{{this.adress}}</td>
 			    			<td>{{this.sportFacility.radnoVreme}}</td>
 			    			<td>{{this.sportFacility.prosecnaOcena}}</td>			    			
+			    		</tr>
+			    	</table>
+			    	<h1>Prikaz trenera</h1>
+					<hr>
+					<table border="1" class="table table-responsive">
+			    		<tr bgcolor="lightgrey" height="2px">
+			    			<th>Korisničko ime</th>
+			    			<th>Ime</th>
+			    			<th>Prezime</th>
+			    			<th>Pol</th>
+			    			<th>Datum rođenja</th>
+			    		</tr>
+						<tr v-for="t in trainers">
+			    			<td>{{t.username}}</td>
+			    			<td>{{t.ime}}</td>
+			    			<td>{{t.prezime}}</td>
+			    			<td>{{t.pol}}</td>
+							<td>{{t.datumRodjenja}}</td>
 			    		</tr>
 			    	</table>	
 			   </div>
@@ -49,7 +71,16 @@ Vue.component("sport-facility-view",{
 		loadSportFacility(){
 			axios
 				.get('rest/users/getManagersFacility/' + this.loggedUser.username)
-				.then(response => (this.sportFacility = response.data))
+				.then(response => {
+					this.sportFacility = response.data;
+					this.adress = response.data.lokacija.adresa;
+					this.getTrainersInFacility(response.data.id);
+				})
+		},
+		getTrainersInFacility(id){
+			axios
+				.get('rest/trainings/getTrainersInFacility/' + id)
+				.then(response => (this.trainers = response.data))
 		}
 	},
 	

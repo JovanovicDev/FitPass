@@ -125,5 +125,6 @@ public class KorisnikDAO {
 	public SportskiObjekat getManagersFacility(String username) {
 		Korisnik k = getByUsername(username);
 		return k.getSportskiObjekat();
-	}
+	}	
+	
 }

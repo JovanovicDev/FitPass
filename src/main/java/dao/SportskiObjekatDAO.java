@@ -52,14 +52,6 @@ public class SportskiObjekatDAO {
         return new String(Files.readAllBytes(Paths.get(file)));
     }
 	
-	public SportskiObjekat find(int id) {
-		if (!sportskiObjekti.containsKey(Integer.toString(id))) {
-			return null;
-		}
-		SportskiObjekat objekat = sportskiObjekti.get(Integer.toString(id));
-		return objekat;
-	}
-	
 	public void addSportFacility(SportskiObjekat objekat) {
 		sportskiObjekti.put(Integer.toString(objekat.getId()),objekat);
 	}

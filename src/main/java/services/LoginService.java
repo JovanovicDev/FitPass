@@ -24,6 +24,7 @@ import javax.ws.rs.core.Response;
 import beans.Korisnik;
 import dao.KorisnikDAO;
 import dao.SportskiObjekatDAO;
+import dao.TreningDAO;
 
 @Path("/log")
 public class LoginService {
@@ -41,6 +42,9 @@ public class LoginService {
 			
 			String pathForSportFacilities = ctx.getRealPath("/data/sportFacilities.json");
 			ctx.setAttribute("sportFacilityDAO", new SportskiObjekatDAO(pathForSportFacilities));
+			
+			String pathForTrainings = ctx.getRealPath("/data/trainings.json");
+			ctx.setAttribute("trainingDAO", new TreningDAO(pathForTrainings));
 		}
 	}
 	

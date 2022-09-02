@@ -35,6 +35,18 @@ public class Trening {
 		this.slika = slika;
 	}
 	
+	public Trening(Trening t) {
+		super();
+		this.id = t.getId();
+		this.naziv = t.getNaziv();
+		this.tip = t.getTip();
+		this.sportskiObjekat = t.getSportskiObjekat();
+		this.trajanje = t.getTrajanje();
+		this.trener = t.getTrener();
+		this.opis = t.getOpis();
+		this.slika = t.getSlika();
+	}
+	
 	public int getId() {
 		return id;
 	}

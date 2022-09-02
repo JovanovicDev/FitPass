@@ -22,6 +22,7 @@ import beans.Korisnik;
 import beans.SportskiObjekat;
 import dao.KorisnikDAO;
 import dao.SportskiObjekatDAO;
+import dao.TreningDAO;
 
 @Path("/users")
 public class UserService {
@@ -38,6 +39,9 @@ public class UserService {
 			
 			String pathForSportFacilities = ctx.getRealPath("/data/sportFacilities.json");
 			ctx.setAttribute("sportFacilityDAO", new SportskiObjekatDAO(pathForSportFacilities));
+			
+			String pathForTrainings = ctx.getRealPath("/data/trainings.json");
+			ctx.setAttribute("trainingDAO", new TreningDAO(pathForTrainings));
 		}
 	}
 	
@@ -89,4 +93,5 @@ public class UserService {
 		KorisnikDAO korisnikDao = (KorisnikDAO)ctx.getAttribute("userDAO");
 		return korisnikDao.getManagersFacility(text);
 	}
+		
 }

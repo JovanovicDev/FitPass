@@ -29,6 +29,7 @@ import beans.Pol;
 import beans.Uloga;
 import dao.KorisnikDAO;
 import dao.SportskiObjekatDAO;
+import dao.TreningDAO;
 
 @Path("/registration")
 public class RegistrationService {
@@ -46,6 +47,9 @@ public class RegistrationService {
 			
 			String pathForSportFacilities = ctx.getRealPath("/data/sportFacilities.json");
 			ctx.setAttribute("sportFacilityDAO", new SportskiObjekatDAO(pathForSportFacilities));
+			
+			String pathForTrainings = ctx.getRealPath("/data/trainings.json");
+			ctx.setAttribute("trainingDAO", new TreningDAO(pathForTrainings));
 		}
 	}
 	
