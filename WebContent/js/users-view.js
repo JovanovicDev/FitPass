@@ -17,7 +17,7 @@ Vue.component("users-view",{
 			<navbar></navbar>
 			<div class="row justify-content-center my-5 g-0">
 				<div class="col-auto text-center w-75">
-					<h1>Prikaz korisnika</h1>
+					<h1>Korisnici</h1>
 					<hr>
 					<div class="input-group justify-content-between my-2">
 						<div class="d-inline-flex">
@@ -36,6 +36,7 @@ Vue.component("users-view",{
 						  	<button type="button" id="resetFiltersButton" class="btn btn-outline-success ms-2 text-nowrap" @click="loadUsers()">Resetuj filtere</button>
 						</div>
 						<div class="d-inline-flex">
+							<button type="button" id="addButton" class="btn btn-outline-success me-2" @click="$router.push('/add-user')">Dodaj novog</button>
 							<div class="form-outline">
 						  		<input type="search" id="searchField" class="form-control mx-1" v-model="search"/>			    
 						 	</div>
@@ -59,8 +60,8 @@ Vue.component("users-view",{
 			    			<td>{{u.ime}}</td>
 			    			<td>{{u.prezime}}</td>
 			    			<td>{{u.uloga}}</td>
-							<td>{{u.tipKupca.ime}}</td>
-							<td>{{u.brojSakupljenihBodova}}</td>
+							<td v-if="u.uloga == 'KUPAC'">{{u.tipKupca.ime}}</td>
+							<td v-if="u.uloga == 'KUPAC'">{{u.brojSakupljenihBodova}}</td>
 			    		</tr>
 		    		</table>
 				</div>

@@ -1,12 +1,14 @@
-Vue.component("registration",{
+Vue.component("add-user",{
 	data(){
         return{
+			loggedUser: {},
             form: {
                 username: '',
                 name: '',
                 lastName: '',
                 gender: '',
                 dateOfBirth: '',
+                role: '',
                 password: '',
                 confirm: ''		
             },
@@ -14,15 +16,17 @@ Vue.component("registration",{
 			submitError:false
         }
     },
+	
 	template:
-	`	<div>
-			<navbar-guest></navbar-guest>
+	`	
+		<div>
+			<navbar></navbar>
 			<div class="container my-5">
 		 	<div class="row">
 			    <div class="col"></div>
 			    <div class="col align-items-center">
 					<form v-on:submit.prevent="checkForm">
-						<h1>Registracija</h1>
+						<h1>Registracija novog člana</h1>
 						<hr>
 						<label for="username"><b>Korisničko ime</b></label>
 						<input type="text" class="form-control" placeholder="Korisničko ime" name="username" v-model="form.username" required>
@@ -42,14 +46,19 @@ Vue.component("registration",{
 						<label for="date"><b>Datum rođenja</b></label>
 						<input type="date" class="form-control" placeholder="Datum rođenja" name="date" v-model="form.dateOfBirth" required>
 						<br>
+						<label for="role"><b>Uloga</b>&nbsp;&nbsp;&nbsp;</label>
+						<select name="role" v-model="form.role" class="btn btn-primary" required>
+							<option value="MENADZER">Menadžer</option>
+							<option value="TRENER">Trener</option>
+						</select>
+						<br><br>
 						<label for="password"><b>Šifra</b></label>
 						<input type="password" class="form-control" placeholder="Šifra" name="password"  v-model="form.password" required>
 						<br>
 						<label for="confirm"><b>Potvrda šifre</b></label>
 						<input type="password" class="form-control" placeholder="Potvrda šifre" name="confirm" v-model="form.confirm" required>
 						<hr>
-						<button type="submit" class="btn-lg btn-primary"><strong>Registruj se</strong></button>
-						<p>Već imate nalog? <a href="#/">Ulogujte se</a>.</p>
+						<button type="submit" class="btn-lg btn-primary"><strong>Kreiraj</strong></button>
 					</form>
 					<p v-if="passwordError">
 					    <b>Šifre se ne poklapaju!</b>
@@ -81,10 +90,8 @@ Vue.component("registration",{
                  });
 			}
 		}
-		
-	}
-	,
-	mounted(){
-		
+	},	
+	mounted(){		
+		this.loggedUser = JSON.parse(window.localStorage.getItem('loggedUser'));	
 	}
 })

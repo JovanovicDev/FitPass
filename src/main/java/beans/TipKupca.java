@@ -42,5 +42,5 @@ public class TipKupca {
 	public void setTrazeniBrojBodova(int trazeniBrojBodova) {
 		this.trazeniBrojBodova = trazeniBrojBodova;
 	}
-	
+
 }

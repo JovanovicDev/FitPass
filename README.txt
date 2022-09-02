@@ -10,7 +10,7 @@
 
 + prikaz svih sportskih objekata na pocetnoj strani vidljiv svim korisnicima
 
-- menadzer: pregled svog sportskog objekta (trenera koji drze treninge u njemu i kupaca)
++ menadzer: pregled svog sportskog objekta (trenera koji drze treninge u njemu i kupaca)
 
 - administrator: dodavanje novog menadzera ili trenera
 

@@ -66,7 +66,15 @@ public class RegistrationService {
 		}
 		
 		Korisnik newuser = new Korisnik(values.get("username"), values.get("password"), values.get("name"), values.get("lastName"), Pol.valueOf(values.get("gender")), values.get("dateOfBirth"));
-
+		
+		if(values.get("role") != null) {
+			if(values.get("role").equals("MENADZER")) {
+				newuser.setUloga(Uloga.MENADZER);
+			} else {
+				newuser.setUloga(Uloga.TRENER);
+			}
+		}
+		
 		userDao.addUser(newuser);
 		String jsonString = mapper.writeValueAsString(newuser);
 		userDao.saveChanges();
