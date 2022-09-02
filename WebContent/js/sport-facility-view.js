@@ -4,7 +4,8 @@ Vue.component("sport-facility-view",{
 			loggedUser: null,
 			sportFacility: {},
 			adress: '',
-			trainers: []
+			trainers: [],
+			visitors: []
         }
     },
 	
@@ -17,7 +18,7 @@ Vue.component("sport-facility-view",{
 			
 			<div class="container my-5">
 			    <div class="align-items-center text-center vw-50">
-			    	<h1>Prikaz sportskog objekta</h1>
+			    	<h1>Sportski objekat</h1>
 					<hr>
 			    	<table border="1" class="table table-responsive">
 			    		<tr bgcolor="lightgrey" height="2px">
@@ -41,7 +42,7 @@ Vue.component("sport-facility-view",{
 			    			<td>{{this.sportFacility.prosecnaOcena}}</td>			    			
 			    		</tr>
 			    	</table>
-			    	<h1>Prikaz trenera</h1>
+			    	<h1>Treneri</h1>
 					<hr>
 					<table border="1" class="table table-responsive">
 			    		<tr bgcolor="lightgrey" height="2px">
@@ -57,6 +58,24 @@ Vue.component("sport-facility-view",{
 			    			<td>{{t.prezime}}</td>
 			    			<td>{{t.pol}}</td>
 							<td>{{t.datumRodjenja}}</td>
+			    		</tr>
+			    	</table>
+			    	<h1>Posetioci</h1>
+					<hr>
+					<table border="1" class="table table-responsive">
+			    		<tr bgcolor="lightgrey" height="2px">
+			    			<th>Korisničko ime</th>
+			    			<th>Ime</th>
+			    			<th>Prezime</th>
+			    			<th>Pol</th>
+			    			<th>Datum rođenja</th>
+			    		</tr>
+						<tr v-for="v in visitors">
+			    			<td>{{v.username}}</td>
+			    			<td>{{v.ime}}</td>
+			    			<td>{{v.prezime}}</td>
+			    			<td>{{v.pol}}</td>
+							<td>{{v.datumRodjenja}}</td>
 			    		</tr>
 			    	</table>	
 			   </div>
@@ -75,12 +94,18 @@ Vue.component("sport-facility-view",{
 					this.sportFacility = response.data;
 					this.adress = response.data.lokacija.adresa;
 					this.getTrainersInFacility(response.data.id);
+					this.getVisitorsInFacility(response.data.id);
 				})
 		},
 		getTrainersInFacility(id){
 			axios
 				.get('rest/trainings/getTrainersInFacility/' + id)
 				.then(response => (this.trainers = response.data))
+		},
+		getVisitorsInFacility(id){
+			axios
+				.get('rest/users/getVisitorsInFacility/' + id)
+				.then(response => (this.visitors = response.data))
 		}
 	},
 	

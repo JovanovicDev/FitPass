@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class IstorijaTreninga {
 
-	private Date vremePrijave;
+	private String vremePrijave;
 	private Trening trening;
 	private Korisnik kupac;
 	private Korisnik trener; //ako trening ima trenera
@@ -16,7 +16,7 @@ public class IstorijaTreninga {
 		this.trener = null;
 	}
 
-	public IstorijaTreninga(Date vremePrijave, Trening trening, Korisnik kupac, Korisnik trener) {
+	public IstorijaTreninga(String vremePrijave, Trening trening, Korisnik kupac, Korisnik trener) {
 		super();
 		this.vremePrijave = vremePrijave;
 		this.trening = trening;
@@ -24,11 +24,11 @@ public class IstorijaTreninga {
 		this.trener = trener;
 	}
 
-	public Date getVremePrijave() {
+	public String getVremePrijave() {
 		return vremePrijave;
 	}
 
-	public void setVremePrijave(Date vremePrijave) {
+	public void setVremePrijave(String vremePrijave) {
 		this.vremePrijave = vremePrijave;
 	}
 

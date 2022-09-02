@@ -127,4 +127,18 @@ public class KorisnikDAO {
 		return k.getSportskiObjekat();
 	}	
 	
+	public Collection<Korisnik> getVisitorsInFacility(String id) {
+		List<Korisnik> visitors = new ArrayList<Korisnik>();
+		List<SportskiObjekat> facilities = new ArrayList<SportskiObjekat>();
+		for(Korisnik k : users.values()) {
+			facilities = k.getPoseceniObjekti();
+			for(SportskiObjekat s : facilities) {
+				if(s.getId() == Integer.parseInt(id)) {
+					visitors.add(k);
+				}
+			}
+		}
+		return visitors;
+	}	
+	
 }

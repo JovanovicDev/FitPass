@@ -32,7 +32,7 @@ Vue.component("Profile",{
 						<input type="text" class="form-control" placeholder="Prezime" name="lastname" v-model="loggedUser.prezime">
 						<br>
 						<label for="gender"><b>Pol</b>&nbsp;&nbsp;&nbsp;</label>
-						<select name="gender" v-model="loggedUser.pol" class="btn btn-primary">
+						<select name="gender" v-model="loggedUser.pol" class="btn btn-outline-success">
 							<option value="MUSKI">Muški</option>
 							<option value="ZENSKI">Ženski</option>
 						</select>
@@ -46,7 +46,7 @@ Vue.component("Profile",{
 						<label for="confirm"><b>Potvrda šifre</b></label>
 						<input type="password" class="form-control" placeholder="Potvrda šifre" name="confirm" v-model="confirmPassword">
 						<hr>
-						<button type="submit" class="btn-lg btn-primary"><strong>Izmeni podatke</strong></button>
+						<button type="submit" class="btn btn-outline-success"><strong>Izmeni podatke</strong></button>
 					</form>
 					<p v-if="passwordError">
 					    <b>Šifre se ne poklapaju!</b>

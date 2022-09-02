@@ -12,6 +12,8 @@
 
 - menadzer: pregled svog sportskog objekta (trenera koji drze treninge u njemu i kupaca)
 
+- administrator: dodavanje novog menadzera ili trenera
+
 - administrator: kreiranje novog sportskog objekta
 
 - pretraga sportskih objekata po nazivu/tipu/lokaciji/prosecnoj oceni, prikazuju se naziv, tip, lokacija, logo, prosecna ocena, radno vreme. omoguciti sortiranje (rastuci i opadajuci kriterijum) prema naziv/lokacija/prosecna ocena i filtriranje prema tip objekta/prikaz samo otvorenih objekata

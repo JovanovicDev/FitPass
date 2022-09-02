@@ -94,4 +94,12 @@ public class UserService {
 		return korisnikDao.getManagersFacility(text);
 	}
 		
+	@GET
+	@Path("/getVisitorsInFacility/{text}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Collection<Korisnik> getVisitorsInFacility(@PathParam("text") String text) {
+		KorisnikDAO korisnikDao = (KorisnikDAO)ctx.getAttribute("userDAO");
+		return korisnikDao.getVisitorsInFacility(text);
+	}
+	
 }
