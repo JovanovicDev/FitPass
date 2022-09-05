@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.core.JsonGenerationException;
@@ -53,7 +54,7 @@ public class SportskiObjekatDAO {
     }
 	
 	public void addSportFacility(SportskiObjekat objekat) {
-		sportskiObjekti.put(Integer.toString(objekat.getId()),objekat);
+		this.sportskiObjekti.put(Integer.toString(objekat.getId()),objekat);
 	}
 	
 	public SportskiObjekat getById(int id) {
@@ -99,4 +100,20 @@ public class SportskiObjekatDAO {
 		return resultList;
 	}
 	
+	public SportskiObjekat getByName(String name) {
+		for (SportskiObjekat o : sportskiObjekti.values()) {
+			if (o.getNaziv().equals(name))
+				return o;
+		}
+		return null;
+	}
+	
+	public int generateId() {
+		int max = 0;
+		if(sportskiObjekti.isEmpty()) max = 0;
+		for(SportskiObjekat o : sportskiObjekti.values()) {
+			if(o.getId() > max) max = o.getId();
+		}
+		return ++max;
+	}
 }

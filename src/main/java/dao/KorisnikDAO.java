@@ -12,6 +12,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -24,6 +25,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import beans.Korisnik;
 import beans.SportskiObjekat;
+import beans.Uloga;
 
 public class KorisnikDAO {
 	private Map<String, Korisnik> users = new HashMap<>();
@@ -124,6 +126,7 @@ public class KorisnikDAO {
 	
 	public SportskiObjekat getManagersFacility(String username) {
 		Korisnik k = getByUsername(username);
+		System.out.println(getByUsername("m1"));
 		return k.getSportskiObjekat();
 	}	
 	
@@ -140,5 +143,14 @@ public class KorisnikDAO {
 		}
 		return visitors;
 	}	
+	
+	public Collection<Korisnik> getFreeManagers(){
+		List<Korisnik> managers = new ArrayList<Korisnik>();
+		for (Korisnik k : users.values()) {
+			if (k.getUloga() == Uloga.MENADZER && k.getSportskiObjekat() == null)
+				managers.add(k);
+		}
+		return managers;
+	}
 	
 }

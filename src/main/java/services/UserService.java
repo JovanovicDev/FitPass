@@ -102,4 +102,20 @@ public class UserService {
 		return korisnikDao.getVisitorsInFacility(text);
 	}
 	
+	@GET
+	@Path("/managers")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Collection<Korisnik> getFreeManagers(){
+		KorisnikDAO korisnikDao = (KorisnikDAO)ctx.getAttribute("userDAO");
+		return korisnikDao.getFreeManagers();
+	}
+	
+	@GET
+	@Path("/getByUsername/{username}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Korisnik getByUsername(@PathParam("username") String username) {
+		KorisnikDAO korisnikDao = (KorisnikDAO)ctx.getAttribute("userDAO");
+		return korisnikDao.getByUsername(username);
+	}
+	
 }

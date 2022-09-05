@@ -1,12 +1,16 @@
 package services;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
+import java.util.Base64;
 import java.util.Collection;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.ServletContext;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -57,6 +61,25 @@ public class SportFacilityService {
 	public Collection<SportskiObjekat> getSportFacilities() {
 		SportskiObjekatDAO sportskiObjekatDAO = (SportskiObjekatDAO)ctx.getAttribute("sportFacilityDAO");
 		return sportskiObjekatDAO.findAll();
+	}
+	
+	@POST
+	@Path("/add")
+	public SportskiObjekat add(SportskiObjekat objekat) throws JsonGenerationException, JsonMappingException, IOException {
+		SportskiObjekatDAO sportskiObjekatDAO = (SportskiObjekatDAO)ctx.getAttribute("sportFacilityDAO");
+		if (sportskiObjekatDAO.getByName(objekat.getNaziv()) != null)
+			return null;
+		
+		objekat.setId(sportskiObjekatDAO.generateId());
+		String imagePath = ctx.getRealPath("images/") + objekat.getId() + ".png";
+		byte[] decodedImg = Base64.getDecoder().decode(objekat.getLogo());
+		try (OutputStream stream = new FileOutputStream(imagePath)) {
+			stream.write(decodedImg);
+			stream.flush();
+		}catch(Exception ex) { }
+		objekat.setLogo("images/" + objekat.getId() + ".png");
+		sportskiObjekatDAO.addSportFacility(objekat);
+		return objekat;
 	}
 	
 }
