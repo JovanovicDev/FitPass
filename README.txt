@@ -16,7 +16,7 @@
 
 + administrator: dodavanje novog sportskog objekta
 
-- pretraga sportskih objekata po nazivu/tipu/lokaciji/prosecnoj oceni, prikazuju se naziv, tip, lokacija, logo, prosecna ocena, radno vreme. omoguciti sortiranje (rastuci i opadajuci kriterijum) prema naziv/lokacija/prosecna ocena i filtriranje prema tip objekta/prikaz samo otvorenih objekata
++ pretraga sportskih objekata po nazivu/tipu/lokaciji/prosecnoj oceni, prikazuju se naziv, tip, lokacija, logo, prosecna ocena, radno vreme. omoguciti sortiranje (rastuci i opadajuci kriterijum) prema naziv/lokacija/prosecna ocena i filtriranje prema tip objekta/prikaz samo otvorenih objekata
 
 - prikaz jednog sportskog objekta (naziv, tip, status, lokacija, logo, prosecna ocena, komentari, raspored treninga)
 
