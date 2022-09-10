@@ -14,9 +14,7 @@
 
 + administrator: dodavanje novog menadzera ili trenera
 
-- administrator: dodavanje novog sportskog objekta
-
-- administrator: logicko brisanje korisnika ili sportskog objekta
++ administrator: dodavanje novog sportskog objekta
 
 - pretraga sportskih objekata po nazivu/tipu/lokaciji/prosecnoj oceni, prikazuju se naziv, tip, lokacija, logo, prosecna ocena, radno vreme. omoguciti sortiranje (rastuci i opadajuci kriterijum) prema naziv/lokacija/prosecna ocena i filtriranje prema tip objekta/prikaz samo otvorenih objekata
 
@@ -51,5 +49,7 @@
 - kupac: pregled odobrenih komentara
 
 - menadzer i administrator: pregled svih komentara
+
+- administrator: logicko brisanje korisnika ili sportskog objekta
 
 - definisanje skale bodova za tipove korisnika
