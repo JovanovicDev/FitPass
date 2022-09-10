@@ -124,12 +124,6 @@ public class KorisnikDAO {
 		return newUsers;
 	}
 	
-	public SportskiObjekat getManagersFacility(String username) {
-		Korisnik k = getByUsername(username);
-		System.out.println(getByUsername("m1"));
-		return k.getSportskiObjekat();
-	}	
-	
 	public Collection<Korisnik> getVisitorsInFacility(String id) {
 		List<Korisnik> visitors = new ArrayList<Korisnik>();
 		List<SportskiObjekat> facilities = new ArrayList<SportskiObjekat>();
@@ -147,7 +141,7 @@ public class KorisnikDAO {
 	public Collection<Korisnik> getFreeManagers(){
 		List<Korisnik> managers = new ArrayList<Korisnik>();
 		for (Korisnik k : users.values()) {
-			if (k.getUloga() == Uloga.MENADZER && k.getSportskiObjekat() == null)
+			if (k.getUloga() == Uloga.MENADZER && k.getSportskiObjekatId() == 0)
 				managers.add(k);
 		}
 		return managers;

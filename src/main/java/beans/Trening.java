@@ -5,7 +5,7 @@ public class Trening {
 	private int id;
 	private String naziv;
 	private String tip; //grupni, personalni, teretana, ...
-	private SportskiObjekat sportskiObjekat;
+	private int sportskiObjekatId;
 	private int trajanje; //u minutima
 	private Korisnik trener; //ako postoji
 	private String opis;
@@ -15,20 +15,20 @@ public class Trening {
 		this.id = 0;
 		this.naziv = "";
 		this.tip = "";
-		this.sportskiObjekat = null;
+		this.sportskiObjekatId = 0;
 		this.trajanje = 0;
 		this.trener = null;
 		this.opis = "";
 		this.slika = "";
 	}
 
-	public Trening(int id, String naziv, String tip, SportskiObjekat sportskiObjekat, int trajanje, Korisnik trener,
+	public Trening(int id, String naziv, String tip, int sportskiObjekatId, int trajanje, Korisnik trener,
 			String opis, String slika) {
 		super();
 		this.id = id;
 		this.naziv = naziv;
 		this.tip = tip;
-		this.sportskiObjekat = sportskiObjekat;
+		this.sportskiObjekatId = sportskiObjekatId;
 		this.trajanje = trajanje;
 		this.trener = trener;
 		this.opis = opis;
@@ -40,7 +40,7 @@ public class Trening {
 		this.id = t.getId();
 		this.naziv = t.getNaziv();
 		this.tip = t.getTip();
-		this.sportskiObjekat = t.getSportskiObjekat();
+		this.sportskiObjekatId = t.getSportskiObjekatId();
 		this.trajanje = t.getTrajanje();
 		this.trener = t.getTrener();
 		this.opis = t.getOpis();
@@ -71,12 +71,12 @@ public class Trening {
 		this.tip = tip;
 	}
 
-	public SportskiObjekat getSportskiObjekat() {
-		return sportskiObjekat;
+	public int getSportskiObjekatId() {
+		return sportskiObjekatId;
 	}
 
-	public void setSportskiObjekat(SportskiObjekat sportskiObjekat) {
-		this.sportskiObjekat = sportskiObjekat;
+	public void setSportskiObjekatId(int sportskiObjekatId) {
+		this.sportskiObjekatId = sportskiObjekatId;
 	}
 
 	public int getTrajanje() {

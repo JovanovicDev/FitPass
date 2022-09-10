@@ -11,6 +11,7 @@ public class SportskiObjekat {
 	private String logo; //slika, stoji String za sada, mozda putanja do slike?
 	private double prosecnaOcena;
 	private String radnoVreme; //u formatu XX:XX - XX:XX
+	private String menadzerUsername;
 	
 	public SportskiObjekat() {
 		this.id = 0;
@@ -22,10 +23,11 @@ public class SportskiObjekat {
 		this.logo = "";
 		this.prosecnaOcena = 0;
 		this.radnoVreme = "";
+		this.menadzerUsername = "";
 	}
 	
 	public SportskiObjekat(int id, String naziv, String tip, String sadrzaj, String status, Lokacija lokacija, String logo,
-			double prosecnaOcena, String radnoVreme) {
+			double prosecnaOcena, String radnoVreme, String menadzerUsername) {
 		super();
 		this.id = id;
 		this.naziv = naziv;
@@ -36,6 +38,7 @@ public class SportskiObjekat {
 		this.logo = logo;
 		this.prosecnaOcena = prosecnaOcena;
 		this.radnoVreme = radnoVreme;
+		this.menadzerUsername = menadzerUsername;
 	}
 
 
@@ -50,6 +53,7 @@ public class SportskiObjekat {
 		this.logo = o.getLogo();
 		this.prosecnaOcena = o.getProsecnaOcena();
 		this.radnoVreme = o.getRadnoVreme();
+		this.menadzerUsername = o.getMenadzerUsername();
 	}
 	
 	public int getId() {
@@ -124,4 +128,12 @@ public class SportskiObjekat {
 		this.radnoVreme = radnoVreme;
 	}
 	
+	public String getMenadzerUsername() {
+		return menadzerUsername;
+	}
+
+	public void setMenadzerUsername(String menadzerUsername) {
+		this.menadzerUsername = menadzerUsername;
+	}
+
 }

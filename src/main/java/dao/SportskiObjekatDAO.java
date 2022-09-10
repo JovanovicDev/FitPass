@@ -116,4 +116,13 @@ public class SportskiObjekatDAO {
 		}
 		return ++max;
 	}
+	
+	public SportskiObjekat getFacilityByManagerUsername(String username) {
+		for(SportskiObjekat o : sportskiObjekti.values()) {
+			if(o.getMenadzerUsername().equals(username)) {
+				return o;
+			}
+		}
+		return null;
+	}
 }

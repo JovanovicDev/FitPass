@@ -10,7 +10,8 @@ Vue.component("add-sport-facility",{
                 lokacija: null,
                 logo: '',
                 prosecnaOcena: '',
-                radnoVreme: ''		
+                radnoVreme: '',
+                menadzerUsername: ''		
             },
             lokacija: {
 				geografskaSirina: '',
@@ -26,7 +27,7 @@ Vue.component("add-sport-facility",{
                 role: 'MANAGER',
                 password: '',
                 confirm: '',
-                sportFacility: null	
+                sportFacilityId: ''	
 			},
 			submitError:false,
 			passwordError: false,
@@ -155,7 +156,7 @@ Vue.component("add-sport-facility",{
 					this.form.lokacija = this.lokacija;
 					axios.post('rest/sportFacilities/add', this.form)
 						.then((res) => {
-							this.newManager.sportFacility = res.data;
+							this.newManager.sportFacilityId = res.data.id;
 							this.updateManager();
 						});
 				}
@@ -199,6 +200,7 @@ Vue.component("add-sport-facility",{
 		setManager: function(){
 			let text = this.managerFullName;
 			const Array = text.split(" ");
+			this.form.menadzerUsername = Array[2];
 			axios.get('rest/users/getByUsername/' + Array[2])
 			.then((res) => {
 				this.newManager = res.data;

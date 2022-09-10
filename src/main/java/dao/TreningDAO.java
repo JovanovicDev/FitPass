@@ -87,7 +87,7 @@ public class TreningDAO {
 	public Collection<Korisnik> getTrainersInFacility(String text){
 		List<Korisnik> trainers = new ArrayList<Korisnik>();
 		for(Trening t : trainings.values()) {
-			if(t.getSportskiObjekat().getId() == Integer.parseInt(text)){
+			if(t.getSportskiObjekatId() == Integer.parseInt(text)){
 				trainers.add(t.getTrener());
 			}
 		}

@@ -87,14 +87,6 @@ public class UserService {
 	}
 	
 	@GET
-	@Path("/getManagersFacility/{text}")
-	@Produces(MediaType.APPLICATION_JSON)
-	public SportskiObjekat getManagersFacility(@PathParam("text") String text) {
-		KorisnikDAO korisnikDao = (KorisnikDAO)ctx.getAttribute("userDAO");
-		return korisnikDao.getManagersFacility(text);
-	}
-		
-	@GET
 	@Path("/getVisitorsInFacility/{text}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Collection<Korisnik> getVisitorsInFacility(@PathParam("text") String text) {

@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
@@ -24,7 +25,7 @@ public class Korisnik {
 	//Samo za ulogu Trener
 	private List<IstorijaTreninga> istorijaTreninga; //lista prethodnih treninga
 	//Samo za ulogu Menadzer
-	private SportskiObjekat sportskiObjekat;
+	private int sportskiObjekatId;
 	//Samo za ulogu Kupac
 	private Clanarina clanarina; 
 	private List<SportskiObjekat> poseceniObjekti; 
@@ -40,7 +41,7 @@ public class Korisnik {
 		this.datumRodjenja = null;
 		this.uloga = Uloga.KUPAC;
 		this.istorijaTreninga = new ArrayList<IstorijaTreninga>();
-		this.sportskiObjekat = null;
+		this.sportskiObjekatId = 0;
 		this.clanarina = null;
 		this.poseceniObjekti = new ArrayList<SportskiObjekat>();
 		this.brojSakupljenihBodova = 0;
@@ -57,7 +58,7 @@ public class Korisnik {
 		this.datumRodjenja = datumRodjenja;
 		this.uloga = Uloga.KUPAC;
 		this.istorijaTreninga = new ArrayList<IstorijaTreninga>();
-		this.sportskiObjekat = null;
+		this.sportskiObjekatId = 0;
 		this.clanarina = null;
 		this.poseceniObjekti = new ArrayList<SportskiObjekat>();
 		this.brojSakupljenihBodova = 0;
@@ -74,7 +75,7 @@ public class Korisnik {
 		this.datumRodjenja = k.getDatumRodjenja();
 		this.uloga = k.getUloga();
 		this.istorijaTreninga = k.getIstorijaTreninga();
-		this.sportskiObjekat = k.getSportskiObjekat();
+		this.sportskiObjekatId = k.getSportskiObjekatId();
 		this.clanarina = k.getClanarina();
 		this.poseceniObjekti = k.getPoseceniObjekti();
 		this.brojSakupljenihBodova = k.getBrojSakupljenihBodova();
@@ -145,12 +146,12 @@ public class Korisnik {
 		this.istorijaTreninga = istorijaTreninga;
 	}
 
-	public SportskiObjekat getSportskiObjekat() {
-		return sportskiObjekat;
+	public int getSportskiObjekatId() {
+		return sportskiObjekatId;
 	}
 
-	public void setSportskiObjekat(SportskiObjekat sportskiObjekat) {
-		this.sportskiObjekat = sportskiObjekat;
+	public void setSportskiObjekatId(int sportskiObjekatId) {
+		this.sportskiObjekatId = sportskiObjekatId;
 	}
 
 	public Clanarina getClanarina() {

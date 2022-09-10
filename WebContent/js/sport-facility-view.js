@@ -89,13 +89,14 @@ Vue.component("sport-facility-view",{
 	methods:{
 		loadSportFacility(){
 			axios
-				.get('rest/users/getManagersFacility/' + this.loggedUser.username)
-				.then(response => {
-					this.sportFacility = response.data;
-					this.adress = response.data.lokacija.adresa;
-					this.getTrainersInFacility(response.data.id);
-					this.getVisitorsInFacility(response.data.id);
-				})
+				.get('rest/sportFacilities/getFacilityByManagerUsername/' + this.loggedUser.username)
+					.then(response => {
+						this.sportFacility = response.data;
+						this.adress = response.data.lokacija.adresa;
+						this.getTrainersInFacility(response.data.id);
+						this.getVisitorsInFacility(response.data.id);
+					})
+			
 		},
 		getTrainersInFacility(id){
 			axios

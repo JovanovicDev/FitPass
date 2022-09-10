@@ -13,6 +13,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
@@ -20,6 +21,7 @@ import javax.ws.rs.core.MediaType;
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 
+import beans.Korisnik;
 import beans.SportskiObjekat;
 import dao.KorisnikDAO;
 import dao.SportskiObjekatDAO;
@@ -80,6 +82,14 @@ public class SportFacilityService {
 		objekat.setLogo("images/" + objekat.getId() + ".png");
 		sportskiObjekatDAO.addSportFacility(objekat);
 		return objekat;
+	}
+	
+	@GET
+	@Path("/getFacilityByManagerUsername/{username}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public SportskiObjekat getFacilityByManagerUsername(@PathParam("username") String username) {
+		SportskiObjekatDAO sportskiObjekatDAO = (SportskiObjekatDAO)ctx.getAttribute("sportFacilityDAO");
+		return sportskiObjekatDAO.getFacilityByManagerUsername(username);
 	}
 	
 }
