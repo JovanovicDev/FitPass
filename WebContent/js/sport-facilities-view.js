@@ -76,7 +76,7 @@ Vue.component("sport-facilities-view",{
 			    			<th @click="sort('prosecnaOcena')"><a class="text-reset text-decoration-none" role="button">Prosečna ocena</a></th>
 			    		</tr>
 		    			
-			    		<tr v-for="s in sortedSportFacilities">
+			    		<tr v-for="s in sortedSportFacilities" @click="showSportFacility(s.id)" role="button">
 			    			<td><img height="120px" width="120px" v-bind:src="s.logo"></td>
 			    			<td>{{s.naziv}}</td>
 			    			<td>{{s.tip}}</td>
@@ -151,6 +151,11 @@ Vue.component("sport-facilities-view",{
 				}
 				this.currentSort = s;
 			},
+			
+			showSportFacility(id){
+				window.localStorage.setItem('selectedSportFacilityId', id);
+				this.$router.push({name: 'selectedSportFacility', params: { id: id}});
+			}
 	},
 	
 	computed:{

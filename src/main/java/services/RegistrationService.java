@@ -27,6 +27,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import beans.Korisnik;
 import beans.Pol;
 import beans.Uloga;
+import dao.KomentarDAO;
 import dao.KorisnikDAO;
 import dao.SportskiObjekatDAO;
 import dao.TreningDAO;
@@ -50,6 +51,9 @@ public class RegistrationService {
 			
 			String pathForTrainings = ctx.getRealPath("/data/trainings.json");
 			ctx.setAttribute("trainingDAO", new TreningDAO(pathForTrainings));
+			
+			String pathForComments = ctx.getRealPath("/data/comments.json");
+			ctx.setAttribute("commentDAO", new KomentarDAO(pathForComments));
 		}
 	}
 	

@@ -25,6 +25,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import beans.Korisnik;
 import beans.SportskiObjekat;
 import beans.TipSportskogObjekta;
+import dao.KomentarDAO;
 import dao.KorisnikDAO;
 import dao.SportskiObjekatDAO;
 import dao.TreningDAO;
@@ -47,6 +48,9 @@ public class SportFacilityService {
 			
 			String pathForTrainings = ctx.getRealPath("/data/trainings.json");
 			ctx.setAttribute("trainingDAO", new TreningDAO(pathForTrainings));
+			
+			String pathForComments = ctx.getRealPath("/data/comments.json");
+			ctx.setAttribute("commentDAO", new KomentarDAO(pathForComments));
 		}
 	}
 	
@@ -65,6 +69,14 @@ public class SportFacilityService {
 	public Collection<SportskiObjekat> getSportFacilities() {
 		SportskiObjekatDAO sportskiObjekatDAO = (SportskiObjekatDAO)ctx.getAttribute("sportFacilityDAO");
 		return sportskiObjekatDAO.findAll();
+	}
+	
+	@GET
+	@Path("/getById/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public SportskiObjekat getById(@PathParam("id") String id) {
+		SportskiObjekatDAO sportskiObjekatDAO = (SportskiObjekatDAO)ctx.getAttribute("sportFacilityDAO");
+		return sportskiObjekatDAO.getById(Integer.parseInt(id));
 	}
 	
 	@POST

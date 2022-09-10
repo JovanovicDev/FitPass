@@ -3,26 +3,35 @@ package beans;
 public class Komentar {
 	
 	private int id;
-	private Korisnik kupac;
-	private SportskiObjekat sportskiObjekat;
+	private String kupacUsername;
+	private int sportskiObjekatId;
 	private String tekst;
 	private int ocena; //na skali od 1 do 5
 	
 	public Komentar() {
 		this.id = 0;
-		this.kupac = null;
-		this.sportskiObjekat = null;
+		this.kupacUsername = "";
+		this.sportskiObjekatId = 0;
 		this.tekst = "";
 		this.ocena = 0;
 	}
 
-	public Komentar(int id, Korisnik kupac, SportskiObjekat sportskiObjekat, String tekst, int ocena) {
+	public Komentar(int id, String kupacUsername, int sportskiObjekatId, String tekst, int ocena) {
 		super();
 		this.id = id;
-		this.kupac = kupac;
-		this.sportskiObjekat = sportskiObjekat;
+		this.kupacUsername = kupacUsername;
+		this.sportskiObjekatId = sportskiObjekatId;
 		this.tekst = tekst;
 		this.ocena = ocena;
+	}
+	
+	public Komentar(Komentar k) {
+		super();
+		this.id = k.getId();
+		this.kupacUsername = k.getKupacUsername();
+		this.sportskiObjekatId = k.getSportskiObjekatId();
+		this.tekst = k.getTekst();
+		this.ocena = k.getOcena();
 	}
 
 	public int getId() {
@@ -33,20 +42,20 @@ public class Komentar {
 		this.id = id;
 	}
 	
-	public Korisnik getKupac() {
-		return kupac;
+	public String getKupacUsername() {
+		return kupacUsername;
 	}
 
-	public void setKupac(Korisnik kupac) {
-		this.kupac = kupac;
+	public void setKupacUsername(String kupacUsername) {
+		this.kupacUsername = kupacUsername;
 	}
 
-	public SportskiObjekat getSportskiObjekat() {
-		return sportskiObjekat;
+	public int getSportskiObjekatId() {
+		return sportskiObjekatId;
 	}
 
-	public void setSportskiObjekat(SportskiObjekat sportskiObjekat) {
-		this.sportskiObjekat = sportskiObjekat;
+	public void setSportskiObjekatId(int sportskiObjekatId) {
+		this.sportskiObjekatId = sportskiObjekatId;
 	}
 
 	public String getTekst() {

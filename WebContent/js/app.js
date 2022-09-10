@@ -11,6 +11,7 @@ const SportFacilitiesView = {template: '<sport-facilities-view></sport-facilitie
 const SportFacilityView = {template: '<sport-facility-view></sport-facility-view>'}
 const AddUser = {template: '<add-user></add-user>'}
 const AddSportFacility = {template: '<add-sport-facility></add-sport-facility>'}
+const SelectedSportFacility = {template: '<selected-sport-facility></selected-sport-facility>'}
 
 const router = new VueRouter({
 	mode:'hash',
@@ -24,7 +25,8 @@ const router = new VueRouter({
 		{path:'/sport-facilities', component:SportFacilitiesView},
 		{path:'/sport-facility', component:SportFacilityView},
 		{path:'/add-user', component:AddUser},
-		{path:'/add-sport-facility', component:AddSportFacility}
+		{path:'/add-sport-facility', component:AddSportFacility},
+		{path:'/selected-sport-facility/:id', name:'selectedSportFacility', component:SelectedSportFacility}
 	]
 });
 

@@ -21,6 +21,7 @@ import javax.ws.rs.GET;
 import beans.Korisnik;
 import beans.SportskiObjekat;
 import beans.Trening;
+import dao.KomentarDAO;
 import dao.KorisnikDAO;
 import dao.SportskiObjekatDAO;
 import dao.TreningDAO;
@@ -43,6 +44,9 @@ public class TrainingService {
 			
 			String pathForTrainings = ctx.getRealPath("/data/trainings.json");
 			ctx.setAttribute("trainingDAO", new TreningDAO(pathForTrainings));
+			
+			String pathForComments = ctx.getRealPath("/data/comments.json");
+			ctx.setAttribute("commentDAO", new KomentarDAO(pathForComments));
 		}
 	}
 	
@@ -71,5 +75,12 @@ public class TrainingService {
 		return treningDao.getTrainersInFacility(text);
 	}
 	
+	@GET
+	@Path("/getTrainingsInFacility/{text}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Collection<Trening> getTrainingsInFacility(@PathParam("text") String text) {
+		TreningDAO treningDao = (TreningDAO)ctx.getAttribute("trainingDAO");
+		return treningDao.getTrainingsInFacility(text);
+	}
 	
 }

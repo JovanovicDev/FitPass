@@ -55,9 +55,8 @@ public class TreningDAO {
         return new String(Files.readAllBytes(Paths.get(file)));
     }
 	
-	
 	public void addTraining(Trening training) {
-		trainings.put(Integer.toString(training.getId()),training);
+		trainings.put(Integer.toString(training.getId()), training);
 	}
 	
 	public Trening getById(int id) {
@@ -92,6 +91,16 @@ public class TreningDAO {
 			}
 		}
 		return trainers;
+	}
+	
+	public Collection<Trening> getTrainingsInFacility(String text){
+		List<Trening> trainingsInFacility = new ArrayList<Trening>();
+		for(Trening t : trainings.values()) {
+			if(t.getSportskiObjekatId() == Integer.parseInt(text)){
+				trainingsInFacility.add(t);
+			}
+		}
+		return trainingsInFacility;
 	}
 	
 }

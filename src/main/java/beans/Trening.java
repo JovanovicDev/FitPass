@@ -10,6 +10,7 @@ public class Trening {
 	private Korisnik trener; //ako postoji
 	private String opis;
 	private String slika; //slika, stoji String za sada, mozda putanja do slike?
+	private int doplata;
 	
 	public Trening() {
 		this.id = 0;
@@ -20,10 +21,11 @@ public class Trening {
 		this.trener = null;
 		this.opis = "";
 		this.slika = "";
+		this.doplata = 0;
 	}
 
 	public Trening(int id, String naziv, String tip, int sportskiObjekatId, int trajanje, Korisnik trener,
-			String opis, String slika) {
+			String opis, String slika, int doplata) {
 		super();
 		this.id = id;
 		this.naziv = naziv;
@@ -33,6 +35,7 @@ public class Trening {
 		this.trener = trener;
 		this.opis = opis;
 		this.slika = slika;
+		this.doplata = doplata;
 	}
 	
 	public Trening(Trening t) {
@@ -45,6 +48,7 @@ public class Trening {
 		this.trener = t.getTrener();
 		this.opis = t.getOpis();
 		this.slika = t.getSlika();
+		this.doplata = t.getDoplata();
 	}
 	
 	public int getId() {
@@ -111,4 +115,11 @@ public class Trening {
 		this.slika = slika;
 	}
 		
+	public int getDoplata() {
+		return doplata;
+	}
+
+	public void setDoplata(int doplata) {
+		this.doplata = doplata;
+	}
 }
