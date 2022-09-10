@@ -21,7 +21,10 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import beans.Korisnik;
 import beans.SportskiObjekat;
+import beans.TipSportskogObjekta;
+import beans.Uloga;
 
 public class SportskiObjekatDAO {
 	private Map<String, SportskiObjekat> sportskiObjekti = new HashMap<>();
@@ -124,5 +127,66 @@ public class SportskiObjekatDAO {
 			}
 		}
 		return null;
+	}
+	
+	public Collection<SportskiObjekat> filterType(String text){
+		List<SportskiObjekat> objekti = new ArrayList<SportskiObjekat>();
+		for(SportskiObjekat o : sportskiObjekti.values()) {
+			if(o.getTip().toString().equals(text)) {
+				objekti.add(o);
+			}
+		}
+		return objekti;
+	}
+	
+	public Collection<SportskiObjekat> filterWorking(){
+		List<SportskiObjekat> objekti = new ArrayList<SportskiObjekat>();
+		for(SportskiObjekat o : sportskiObjekti.values()) {
+			if(o.getStatus().equals("Radi")) {
+				objekti.add(o);
+			}
+		}
+		return objekti;
+	}
+	
+	public Collection<SportskiObjekat> search(TipSportskogObjekta type, String city, String name, String averageGrade){
+		 Map<Integer, SportskiObjekat> filteredFacilities = new HashMap<>();
+		
+		 if(city == null) city = "";
+		 if(name == null) name = "";
+		 if(type == null) {
+			 if(averageGrade == null) {
+				 for(SportskiObjekat o : sportskiObjekti.values()) {
+					 if(o.getLokacija().getAdresa().toLowerCase().contains(city.toLowerCase()) 
+							 && o.getNaziv().toLowerCase().contains(name.toLowerCase()))
+						 filteredFacilities.put(o.getId(), o);					
+				 }
+			 } else {
+				 for(SportskiObjekat o : sportskiObjekti.values()) {
+					 if(o.getLokacija().getAdresa().toLowerCase().contains(city.toLowerCase()) 
+							 && o.getProsecnaOcena() == Double.parseDouble(averageGrade)
+							 && o.getNaziv().toLowerCase().contains(name.toLowerCase()))
+						 filteredFacilities.put(o.getId(), o);						
+				 }
+			 }			 
+		 } else {
+			 if(averageGrade == null) {
+				 for(SportskiObjekat o : sportskiObjekti.values()) {
+					 if(o.getLokacija().getAdresa().toLowerCase().contains(city.toLowerCase())
+							 && o.getNaziv().toLowerCase().contains(name.toLowerCase())
+							 && o.getTip()==type)
+						 filteredFacilities.put(o.getId(), o);						
+				 }
+			 } else {
+				 for(SportskiObjekat o : sportskiObjekti.values()) {
+					 if(o.getLokacija().getAdresa().toLowerCase().contains(city.toLowerCase()) 
+							 && o.getProsecnaOcena() == Double.parseDouble(averageGrade)
+							 && o.getNaziv().toLowerCase().contains(name.toLowerCase())
+							 && o.getTip()==type)
+						 filteredFacilities.put(o.getId(), o);						
+				 }
+			 }		
+		 }	 
+		 return filteredFacilities.values();
 	}
 }

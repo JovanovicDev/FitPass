@@ -85,13 +85,18 @@ Vue.component("add-sport-facility",{
 						<input type="text" class="form-control" placeholder="Naziv" name="name" v-model="form.naziv" required>
 						<br>
 						<label for="type"><b>Tip</b></label>
-						<input type="text" class="form-control" placeholder="Tip" name="type" v-model="form.tip" required>
-						<br>
+						<select name="type" v-model="form.tip" class="btn btn-outline-success ms-3" required>
+							<option value="TERETANA">Teretana</option>
+							<option value="SPA">Spa centar</option>
+							<option value="BAZEN">Bazen</option>
+							<option value="SPORTSKI">Sportski centar</option>
+						</select>
+						<br><br>
 						<label for="content"><b>Sadržaj</b></label>
 						<input type="text" class="form-control" placeholder="Sadržaj" name="content" v-model="form.sadrzaj" required>
 						<br>
-						<label for="status"><b>Status</b>&nbsp;&nbsp;&nbsp;</label>
-						<select name="status" v-model="form.status" class="btn btn-outline-success" required>
+						<label for="status"><b>Status</b></label>
+						<select name="status" v-model="form.status" class="btn btn-outline-success ms-3" required>
 							<option>Radi</option>
 							<option>Ne radi</option>
 						</select>

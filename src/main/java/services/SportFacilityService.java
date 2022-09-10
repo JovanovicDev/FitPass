@@ -15,6 +15,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
@@ -23,6 +24,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 
 import beans.Korisnik;
 import beans.SportskiObjekat;
+import beans.TipSportskogObjekta;
 import dao.KorisnikDAO;
 import dao.SportskiObjekatDAO;
 import dao.TreningDAO;
@@ -90,6 +92,31 @@ public class SportFacilityService {
 	public SportskiObjekat getFacilityByManagerUsername(@PathParam("username") String username) {
 		SportskiObjekatDAO sportskiObjekatDAO = (SportskiObjekatDAO)ctx.getAttribute("sportFacilityDAO");
 		return sportskiObjekatDAO.getFacilityByManagerUsername(username);
+	}
+	
+	@GET
+	@Path("/filterType/{text}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Collection<SportskiObjekat> filterType(@PathParam("text") String text) {
+		SportskiObjekatDAO sportskiObjekatDAO = (SportskiObjekatDAO)ctx.getAttribute("sportFacilityDAO");
+		return sportskiObjekatDAO.filterType(text);
+	}
+	
+	@GET
+	@Path("/filterWorking")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Collection<SportskiObjekat> filterWorking() {
+		SportskiObjekatDAO sportskiObjekatDAO = (SportskiObjekatDAO)ctx.getAttribute("sportFacilityDAO");
+		return sportskiObjekatDAO.filterWorking();
+	}
+	
+	@GET
+	@Path("/search")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Collection<SportskiObjekat> getFilteredFacilities(@QueryParam("type") TipSportskogObjekta type,
+			@QueryParam("city") String city, @QueryParam("name") String name, @QueryParam("averageGrade") String averageGrade){
+		SportskiObjekatDAO sportskiObjekatDAO = (SportskiObjekatDAO)ctx.getAttribute("sportFacilityDAO");
+		return sportskiObjekatDAO.search(type, city, name, averageGrade);
 	}
 	
 }

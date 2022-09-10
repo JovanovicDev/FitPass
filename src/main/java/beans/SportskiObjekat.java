@@ -4,7 +4,7 @@ public class SportskiObjekat {
 
 	private int id;
 	private String naziv;
-	private String tip; //teretana, bazen, sportski centar, plesni studio, ...
+	private TipSportskogObjekta tip; //teretana, bazen, sportski centar, plesni studio, ...
 	private String sadrzaj; //grupni, personalni treninzi, sauna, ...
 	private String status; //radi ili ne radi
 	private Lokacija lokacija;
@@ -16,7 +16,7 @@ public class SportskiObjekat {
 	public SportskiObjekat() {
 		this.id = 0;
 		this.naziv = "";
-		this.tip = "";
+		this.tip = TipSportskogObjekta.TERETANA;
 		this.sadrzaj = "";
 		this.status = "";
 		this.lokacija = null;
@@ -26,12 +26,12 @@ public class SportskiObjekat {
 		this.menadzerUsername = "";
 	}
 	
-	public SportskiObjekat(int id, String naziv, String tip, String sadrzaj, String status, Lokacija lokacija, String logo,
+	public SportskiObjekat(int id, String naziv, TipSportskogObjekta tip, String sadrzaj, String status, Lokacija lokacija, String logo,
 			double prosecnaOcena, String radnoVreme, String menadzerUsername) {
 		super();
 		this.id = id;
 		this.naziv = naziv;
-		this.tip = tip;
+		this.tip = TipSportskogObjekta.TERETANA;
 		this.sadrzaj = sadrzaj;
 		this.status = status;
 		this.lokacija = lokacija;
@@ -72,11 +72,11 @@ public class SportskiObjekat {
 		this.naziv = naziv;
 	}
 
-	public String getTip() {
+	public TipSportskogObjekta getTip() {
 		return tip;
 	}
 
-	public void setTip(String tip) {
+	public void setTip(TipSportskogObjekta tip) {
 		this.tip = tip;
 	}
 
