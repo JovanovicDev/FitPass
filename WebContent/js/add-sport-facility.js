@@ -24,10 +24,9 @@ Vue.component("add-sport-facility",{
                 lastName: '',
                 gender: '',
                 dateOfBirth: '',
-                role: 'MANAGER',
+                role: 'MENADZER',
                 password: '',
-                confirm: '',
-                sportFacilityId: ''	
+                confirm: ''
 			},
 			submitError:false,
 			passwordError: false,
@@ -156,7 +155,7 @@ Vue.component("add-sport-facility",{
 					this.form.lokacija = this.lokacija;
 					axios.post('rest/sportFacilities/add', this.form)
 						.then((res) => {
-							this.newManager.sportFacilityId = res.data.id;
+							this.newManager.sportskiObjekatId = res.data.id;
 							this.updateManager();
 						});
 				}
