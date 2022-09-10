@@ -12,8 +12,11 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.core.JsonParseException;
@@ -90,6 +93,7 @@ public class TreningDAO {
 				trainers.add(t.getTrener());
 			}
 		}
+
 		return trainers;
 	}
 	
@@ -100,6 +104,7 @@ public class TreningDAO {
 				trainingsInFacility.add(t);
 			}
 		}
+
 		return trainingsInFacility;
 	}
 	

@@ -101,12 +101,18 @@ Vue.component("sport-facility-view",{
 		getTrainersInFacility(id){
 			axios
 				.get('rest/trainings/getTrainersInFacility/' + id)
-				.then(response => (this.trainers = response.data))
+				.then(response => {
+					this.trainers = response.data;
+				})
+			
 		},
 		getVisitorsInFacility(id){
 			axios
 				.get('rest/users/getVisitorsInFacility/' + id)
 				.then(response => (this.visitors = response.data))
+		},
+		removeDuplicates(){
+			this.trainers = [ ...new Set(this.trainers)]
 		}
 	},
 	

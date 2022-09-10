@@ -20,6 +20,8 @@
 
 + prikaz jednog sportskog objekta (naziv, tip, status, lokacija, logo, prosecna ocena, komentari, raspored treninga)
 
+- menadzer: pregled svih treninga u njegovom sportskom objektu
+
 - menadzer: dodavanje novog sadrzaja u sportski objekat za koji je zaduzen(trening, sauna, ...)
 
 - menadzer: izmena postojeceg sadrzaja
@@ -27,8 +29,6 @@
 - kupac: pregled svih svojih treninga u okviru profila (naziv, sportski objekat, datum treniranja)
 
 - trener: pregled svih svojih treninga u okviru profila, personalni i grupni, omoguciti otkazivanje personalnog treninga(najkasnije 2 dana unapred)
-
-- menadzer: pregled svih treninga u njegovom sportskom objektu
 
 - pretraga treninga po sportski objekat(samo za kupca i trenera)/cena/datum prijave. omoguciti sortiranje(rastuci i opadajuci kriterijum) prema ime sportskog objekta(kupac i trener)/cena treninga/ datum prijave i filtriranje prema tip sportskog objekta(kupac i trener)/tip treninga
 
