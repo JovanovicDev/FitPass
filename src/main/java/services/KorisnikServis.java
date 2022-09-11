@@ -25,11 +25,11 @@ import dao.SportskiObjekatDAO;
 import dao.TreningDAO;
 
 @Path("/users")
-public class UserService {
+public class KorisnikServis {
 	@Context
 	ServletContext ctx;
 	
-	public UserService() {}
+	public KorisnikServis() {}
 	
 	@PostConstruct
 	public void init() {

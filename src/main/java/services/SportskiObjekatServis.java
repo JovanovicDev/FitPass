@@ -30,11 +30,11 @@ import dao.SportskiObjekatDAO;
 import dao.TreningDAO;
 
 @Path("/sportFacilities")
-public class SportFacilityService {
+public class SportskiObjekatServis {
 	@Context
 	ServletContext ctx;
 	
-	public SportFacilityService() {}
+	public SportskiObjekatServis() {}
 	
 	@PostConstruct
 	public void init() {

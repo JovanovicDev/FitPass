@@ -1,29 +1,28 @@
 package services;
 
-import java.util.Collection;
+import java.util.HashMap;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.ServletContext;
-import javax.ws.rs.GET;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
-import beans.Komentar;
+import beans.Korisnik;
 import dao.KomentarDAO;
 import dao.KorisnikDAO;
 import dao.SportskiObjekatDAO;
 import dao.TreningDAO;
 
-@Path("/comments")
-public class CommentService {
-
+@Path("/log")
+public class LoginServis {
+	
 	@Context
 	ServletContext ctx;
 	
-	public CommentService() {}
+	public LoginServis() {}
 	
 	@PostConstruct
 	public void init() {
@@ -42,19 +41,13 @@ public class CommentService {
 		}
 	}
 	
-	@GET
-	@Path("/")
-	@Produces(MediaType.APPLICATION_JSON)
-	public Collection<Komentar> getComments() {
-		KomentarDAO komentarDao = (KomentarDAO)ctx.getAttribute("commentDAO");
-		return komentarDao.findAll();
-	}
-	
-	@GET
-	@Path("/getCommentsOnFacility/{text}")
-	@Produces(MediaType.APPLICATION_JSON)
-	public Collection<Komentar> getCommentsOnFacility(@PathParam("text") String text) {
-		KomentarDAO komentarDao = (KomentarDAO)ctx.getAttribute("commentDAO");
-		return komentarDao.getCommentsOnFacility(text);
+	@POST
+	@Path("/in")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Korisnik login(HashMap<String, String> values) {
+		KorisnikDAO userDao = (KorisnikDAO) ctx.getAttribute("userDAO");
+		Korisnik loggedUser = userDao.find(values.get("username"), values.get("password"));
+
+		return loggedUser;
 	}
 }

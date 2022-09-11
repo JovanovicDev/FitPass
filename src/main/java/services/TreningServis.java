@@ -31,11 +31,11 @@ import dao.SportskiObjekatDAO;
 import dao.TreningDAO;
 
 @Path("/trainings")
-public class TrainingService {
+public class TreningServis {
 	@Context
 	ServletContext ctx;
 	
-	public TrainingService() {}
+	public TreningServis() {}
 	
 	@PostConstruct
 	public void init() {

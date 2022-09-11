@@ -24,12 +24,12 @@ import dao.SportskiObjekatDAO;
 import dao.TreningDAO;
 
 @Path("/registration")
-public class RegistrationService {
+public class RegistracijaServis {
 	
 	@Context
 	ServletContext ctx;
 	
-	public RegistrationService() {}
+	public RegistracijaServis() {}
 	
 	@PostConstruct
 	public void init() {
