@@ -12,7 +12,6 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
 import beans.Komentar;
-import beans.Trening;
 import dao.KomentarDAO;
 import dao.KorisnikDAO;
 import dao.SportskiObjekatDAO;

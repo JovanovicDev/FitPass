@@ -24,7 +24,6 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 
 import beans.Korisnik;
-import beans.SportskiObjekat;
 import beans.Trening;
 import dao.KomentarDAO;
 import dao.KorisnikDAO;

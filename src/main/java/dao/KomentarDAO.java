@@ -17,7 +17,6 @@ import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import beans.Komentar;
-import beans.Trening;
 
 public class KomentarDAO {
 	private Map<String, Komentar> comments = new HashMap<>();

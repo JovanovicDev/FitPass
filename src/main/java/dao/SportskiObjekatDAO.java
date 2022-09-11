@@ -12,7 +12,6 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.core.JsonGenerationException;
@@ -21,10 +20,8 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import beans.Korisnik;
 import beans.SportskiObjekat;
 import beans.TipSportskogObjekta;
-import beans.Uloga;
 
 public class SportskiObjekatDAO {
 	private Map<String, SportskiObjekat> sportskiObjekti = new HashMap<>();

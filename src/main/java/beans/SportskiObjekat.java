@@ -8,7 +8,7 @@ public class SportskiObjekat {
 	private String sadrzaj; //grupni, personalni treninzi, sauna, ...
 	private String status; //radi ili ne radi
 	private Lokacija lokacija;
-	private String logo; //slika, stoji String za sada, mozda putanja do slike?
+	private String logo; //slika
 	private double prosecnaOcena;
 	private String radnoVreme; //u formatu XX:XX - XX:XX
 	private String menadzerUsername;

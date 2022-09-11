@@ -19,7 +19,6 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 
 import beans.Korisnik;
-import beans.SportskiObjekat;
 import dao.KomentarDAO;
 import dao.KorisnikDAO;
 import dao.SportskiObjekatDAO;

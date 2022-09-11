@@ -22,7 +22,6 @@ import javax.ws.rs.core.MediaType;
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 
-import beans.Korisnik;
 import beans.SportskiObjekat;
 import beans.TipSportskogObjekta;
 import dao.KomentarDAO;

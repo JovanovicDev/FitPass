@@ -1,7 +1,5 @@
 package beans;
 
-import java.util.Date;
-
 public class IstorijaTreninga {
 
 	private String vremePrijave;
