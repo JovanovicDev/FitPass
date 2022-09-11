@@ -20,7 +20,7 @@
 
 + prikaz jednog sportskog objekta (naziv, tip, status, lokacija, logo, prosecna ocena, komentari, raspored treninga)
 
-- menadzer: pregled svih treninga u njegovom sportskom objektu
++ menadzer: pregled svih treninga u njegovom sportskom objektu
 
 - menadzer: dodavanje novog sadrzaja u sportski objekat za koji je zaduzen(trening, sauna, ...)
 

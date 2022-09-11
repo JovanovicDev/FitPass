@@ -5,7 +5,8 @@ Vue.component("sport-facility-view",{
 			sportFacility: {},
 			adress: '',
 			trainers: [],
-			visitors: []
+			visitors: [],
+			trainings: []
         }
     },
 	
@@ -40,6 +41,22 @@ Vue.component("sport-facility-view",{
 			    			<td>{{this.adress}}</td>
 			    			<td>{{this.sportFacility.radnoVreme}}</td>
 			    			<td>{{this.sportFacility.prosecnaOcena}}</td>			    			
+			    		</tr>
+			    	</table>
+			    	<h1>Treninzi</h1>
+					<hr>
+					<table border="1" class="table table-responsive">
+			    		<tr bgcolor="lightgrey" height="2px">
+			    			<th>Slika</th>
+			    			<th>Opis</th>
+			    			<th>Trener</th>
+			    			<th>Doplata</th>
+			    		</tr>
+						<tr v-for="t in trainings">
+			    			<td><img height="120px" width="120px" v-bind:src="t.slika"></td>
+			    			<td>{{t.opis}}</td>
+			    			<td>{{t.trener.ime}} {{t.trener.prezime}}</td>
+			    			<td>{{t.doplata}}</td>
 			    		</tr>
 			    	</table>
 			    	<h1>Treneri</h1>
@@ -95,6 +112,7 @@ Vue.component("sport-facility-view",{
 						this.adress = response.data.lokacija.adresa;
 						this.getTrainersInFacility(response.data.id);
 						this.getVisitorsInFacility(response.data.id);
+						this.getTrainingsInFacility(response.data.id);
 					})
 			
 		},
@@ -111,8 +129,13 @@ Vue.component("sport-facility-view",{
 				.get('rest/users/getVisitorsInFacility/' + id)
 				.then(response => (this.visitors = response.data))
 		},
-		removeDuplicates(){
-			this.trainers = [ ...new Set(this.trainers)]
+
+		getTrainingsInFacility(id){
+			axios
+				.get('rest/trainings/getTrainingsInFacility/' + id)
+				.then(response => {
+					this.trainings = response.data;
+				})
 		}
 	},
 	
