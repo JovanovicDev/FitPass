@@ -2,6 +2,7 @@ package services;
 
 import java.io.IOException;
 import java.util.Collection;
+import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.ServletContext;
@@ -70,7 +71,7 @@ public class TrainingService {
 	@GET
 	@Path("/getTrainersInFacility/{text}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Collection<Korisnik> getTrainersInFacility(@PathParam("text") String text) {
+	public Map<String, Korisnik> getTrainersInFacility(@PathParam("text") String text) {
 		TreningDAO treningDao = (TreningDAO)ctx.getAttribute("trainingDAO");
 		return treningDao.getTrainersInFacility(text);
 	}

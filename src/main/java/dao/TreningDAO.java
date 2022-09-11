@@ -86,11 +86,11 @@ public class TreningDAO {
 		mapper.writeValue(new File(path), trainingList);
 	}
 
-	public Collection<Korisnik> getTrainersInFacility(String text){
-		List<Korisnik> trainers = new ArrayList<Korisnik>();
+	public Map<String, Korisnik> getTrainersInFacility(String text){
+		Map<String, Korisnik> trainers = new HashMap<>();
 		for(Trening t : trainings.values()) {
-			if(t.getSportskiObjekatId() == Integer.parseInt(text)){
-				trainers.add(t.getTrener());
+			if(t.getSportskiObjekatId() == Integer.parseInt(text)) {
+				trainers.put(t.getTrener().getUsername(), t.getTrener());
 			}
 		}
 
