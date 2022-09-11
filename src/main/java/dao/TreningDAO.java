@@ -26,6 +26,7 @@ import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import beans.Korisnik;
+import beans.SportskiObjekat;
 import beans.Trening;
 
 public class TreningDAO {
@@ -106,6 +107,23 @@ public class TreningDAO {
 		}
 
 		return trainingsInFacility;
+	}
+	
+	public Trening getByName(String name) {
+		for (Trening t : trainings.values()) {
+			if (t.getNaziv().equals(name))
+				return t;
+		}
+		return null;
+	}
+	
+	public int generateId() {
+		int max = 0;
+		if(trainings.isEmpty()) max = 0;
+		for(Trening t : trainings.values()) {
+			if(t.getId() > max) max = t.getId();
+		}
+		return ++max;
 	}
 	
 }

@@ -114,4 +114,12 @@ public class UserService {
 		return korisnikDao.getByUsername(username);
 	}
 	
+	@GET
+	@Path("/trainers")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Collection<Korisnik> getTrainers(){
+		KorisnikDAO korisnikDao = (KorisnikDAO)ctx.getAttribute("userDAO");
+		return korisnikDao.getTrainers();
+	}
+	
 }

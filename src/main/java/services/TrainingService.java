@@ -1,6 +1,9 @@
 package services;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
+import java.util.Base64;
 import java.util.Collection;
 import java.util.Map;
 
@@ -18,6 +21,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 
 import beans.Korisnik;
 import beans.SportskiObjekat;
@@ -82,6 +86,25 @@ public class TrainingService {
 	public Collection<Trening> getTrainingsInFacility(@PathParam("text") String text) {
 		TreningDAO treningDao = (TreningDAO)ctx.getAttribute("trainingDAO");
 		return treningDao.getTrainingsInFacility(text);
+	}
+	
+	@POST
+	@Path("/add")
+	public Trening add(Trening t) throws JsonGenerationException, JsonMappingException, IOException {
+		TreningDAO treningDao = (TreningDAO)ctx.getAttribute("trainingDAO");
+		if (treningDao.getByName(t.getNaziv()) != null)
+			return null;
+		
+		t.setId(treningDao.generateId());
+		String imagePath = ctx.getRealPath("images/t") + t.getId() + ".png";
+		byte[] decodedImg = Base64.getDecoder().decode(t.getSlika());
+		try (OutputStream stream = new FileOutputStream(imagePath)) {
+			stream.write(decodedImg);
+			stream.flush();
+		}catch(Exception ex) { }
+		t.setSlika("images/t" + t.getId() + ".png");
+		treningDao.addTraining(t);
+		return t;
 	}
 	
 }

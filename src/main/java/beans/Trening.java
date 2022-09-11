@@ -7,9 +7,10 @@ public class Trening {
 	private String tip; //grupni, personalni, teretana, ...
 	private int sportskiObjekatId;
 	private int trajanje; //u minutima
+	private String trenerUsername;
 	private Korisnik trener; //ako postoji
 	private String opis;
-	private String slika;
+	private String slika; 
 	private int doplata;
 	
 	public Trening() {
@@ -18,13 +19,14 @@ public class Trening {
 		this.tip = "";
 		this.sportskiObjekatId = 0;
 		this.trajanje = 0;
+		this.trenerUsername = "";
 		this.trener = null;
 		this.opis = "";
 		this.slika = "";
 		this.doplata = 0;
 	}
 
-	public Trening(int id, String naziv, String tip, int sportskiObjekatId, int trajanje, Korisnik trener,
+	public Trening(int id, String naziv, String tip, int sportskiObjekatId, int trajanje, String trenerUsername, Korisnik trener,
 			String opis, String slika, int doplata) {
 		super();
 		this.id = id;
@@ -32,6 +34,7 @@ public class Trening {
 		this.tip = tip;
 		this.sportskiObjekatId = sportskiObjekatId;
 		this.trajanje = trajanje;
+		this.trenerUsername = trenerUsername;
 		this.trener = trener;
 		this.opis = opis;
 		this.slika = slika;
@@ -45,6 +48,7 @@ public class Trening {
 		this.tip = t.getTip();
 		this.sportskiObjekatId = t.getSportskiObjekatId();
 		this.trajanje = t.getTrajanje();
+		this.trenerUsername = t.getTrenerUsername();
 		this.trener = t.getTrener();
 		this.opis = t.getOpis();
 		this.slika = t.getSlika();
@@ -91,6 +95,14 @@ public class Trening {
 		this.trajanje = trajanje;
 	}
 
+	public String getTrenerUsername() {
+		return trenerUsername;
+	}
+	
+	public void setTrenerUsername(String trenerUsername) {
+		this.trenerUsername = trenerUsername;
+	}
+	
 	public Korisnik getTrener() {
 		return trener;
 	}

@@ -150,4 +150,12 @@ public class KorisnikDAO {
 		return managers;
 	}
 	
+	public Collection<Korisnik> getTrainers(){
+		List<Korisnik> trainers = new ArrayList<Korisnik>();
+		for (Korisnik k : users.values()) {
+			if (k.getUloga() == Uloga.TRENER)
+				trainers.add(k);
+		}
+		return trainers;
+	}
 }
