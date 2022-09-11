@@ -20,9 +20,9 @@
 
 + menadzer: dodavanje novog sadrzaja u sportski objekat za koji je zaduzen(trening, sauna, ...)
 
-	- menadzer: izmena postojeceg sadrzaja
++ menadzer: izmena postojeceg sadrzaja
 
-	- kupac: pregled svih svojih treninga u okviru profila (naziv, sportski objekat, datum treniranja)
+- kupac: pregled svih svojih treninga u okviru profila (naziv, sportski objekat, datum treniranja)
 
 - trener: pregled svih svojih treninga u okviru profila, personalni i grupni, omoguciti otkazivanje personalnog treninga(najkasnije 2 dana unapred)
 
