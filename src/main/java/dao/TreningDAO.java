@@ -91,7 +91,9 @@ public class TreningDAO {
 		Map<String, Korisnik> trainers = new HashMap<>();
 		for(Trening t : trainings.values()) {
 			if(t.getSportskiObjekatId() == Integer.parseInt(text)) {
-				trainers.put(t.getTrener().getUsername(), t.getTrener());
+				if(t.getTrener() != null) {
+					trainers.put(t.getTrener().getUsername(), t.getTrener());
+				}
 			}
 		}
 

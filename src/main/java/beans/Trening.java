@@ -6,7 +6,7 @@ public class Trening {
 	private String naziv;
 	private String tip; //grupni, personalni, teretana, ...
 	private int sportskiObjekatId;
-	private int trajanje; //u minutima
+	private String trajanje; //u minutima
 	private String trenerUsername;
 	private Korisnik trener; //ako postoji
 	private String opis;
@@ -18,7 +18,7 @@ public class Trening {
 		this.naziv = "";
 		this.tip = "";
 		this.sportskiObjekatId = 0;
-		this.trajanje = 0;
+		this.trajanje = "";
 		this.trenerUsername = "";
 		this.trener = null;
 		this.opis = "";
@@ -26,7 +26,7 @@ public class Trening {
 		this.doplata = 0;
 	}
 
-	public Trening(int id, String naziv, String tip, int sportskiObjekatId, int trajanje, String trenerUsername, Korisnik trener,
+	public Trening(int id, String naziv, String tip, int sportskiObjekatId, String trajanje, String trenerUsername, Korisnik trener,
 			String opis, String slika, int doplata) {
 		super();
 		this.id = id;
@@ -87,11 +87,11 @@ public class Trening {
 		this.sportskiObjekatId = sportskiObjekatId;
 	}
 
-	public int getTrajanje() {
+	public String getTrajanje() {
 		return trajanje;
 	}
 
-	public void setTrajanje(int trajanje) {
+	public void setTrajanje(String trajanje) {
 		this.trajanje = trajanje;
 	}
 

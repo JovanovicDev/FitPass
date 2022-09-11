@@ -45,15 +45,17 @@ Vue.component('selected-sport-facility', {
 					<table border="1" class="table table-responsive">
 			    		<tr bgcolor="lightgrey" height="2px">
 			    			<th>Slika</th>
+			    			<th>Naziv</th>
 			    			<th>Opis</th>
-			    			<th>Trener</th>
 			    			<th>Doplata</th>
+			    			<th>Trener</th>			    			
 			    		</tr>
 						<tr v-for="t in trainings">
 			    			<td><img height="120px" width="120px" v-bind:src="t.slika"></td>
-			    			<td>{{t.opis}}</td>
-			    			<td>{{t.trener.ime}} {{t.trener.prezime}}</td>
+			    			<td>{{t.naziv}}</td>
+			    			<td>{{t.opis}}</td>			    			
 			    			<td>{{t.doplata}}</td>
+			    			<td v-if="t.trener != null">{{t.trener.ime}} {{t.trener.prezime}}</td>
 			    		</tr>
 			    	</table>	
 			    	

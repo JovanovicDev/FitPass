@@ -45,7 +45,7 @@ Vue.component("add-training",{
 						</select>
 						<br><br>
 						<label for="duration"><b>Trajanje</b></label>
-						<input type="text" class="form-control" placeholder="Trajanje (opciono)" name="duration" v-model="form.trajanje" required>
+						<input type="text" class="form-control" placeholder="Trajanje (opciono)" name="duration" v-model="form.trajanje">
 						<br>
 						
 						<div v-if="isTraining">
@@ -61,7 +61,7 @@ Vue.component("add-training",{
 						</div>						
 						
 						<label for="desc"><b>Opis</b></label>
-						<input type="text" class="form-control" placeholder="Opis (opciono)" name="desc"  v-model="form.opis" required>
+						<input type="text" class="form-control" placeholder="Opis (opciono)" name="desc"  v-model="form.opis">
 						<br>
 						
 						<label for="slika" class="mb-1"><b>Slika</b></label>
@@ -92,12 +92,15 @@ Vue.component("add-training",{
 	`
 	,
 	methods:{		
-		addContent : function(){
-				console.log(this.form);
+		addContent : function(){				
 				let reader = new FileReader();
 				reader.onloadend = () => {
 					let b64 = reader.result.replace(/^data:.+;base64,/, '');
 					this.form.slika = b64;
+					if(this.isTraining == false){
+						this.form.trenerUsername = '';
+						this.form.trener = null;
+					}
 					axios.post('rest/trainings/add', this.form)
 						.then(() => {
 							this.$router.push('/sport-facility');	
