@@ -121,7 +121,9 @@ public class KorisnikDAO {
 	public Collection<Korisnik> filterType(String text){
 		List<Korisnik> newUsers = new ArrayList<Korisnik>();
 		for(Korisnik k : users.values()) {
-			if(k.getTipKupca().getIme().equals(text)) newUsers.add(k);
+			if(k.getTipKupca() != null) {
+				if(k.getTipKupca().getIme().equals(text)) newUsers.add(k);
+			}
 		}
 		return newUsers;
 	}

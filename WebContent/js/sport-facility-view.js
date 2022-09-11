@@ -6,7 +6,8 @@ Vue.component("sport-facility-view",{
 			adress: '',
 			trainers: [],
 			visitors: [],
-			trainings: []
+			trainings: [],
+			loadButton: false
         }
     },
 	
@@ -46,7 +47,7 @@ Vue.component("sport-facility-view",{
 			    	<h1>Sadržaj</h1>
 					<hr>
 					<div class="d-inline-flex align-items-center">
-						<button type="button" id="addButton" class="btn btn-outline-success mb-2" @click="$router.push('/add-training')">Dodaj sadržaj</button>
+						<button type="button" v-if="loadButton" id="addButton" class="btn btn-outline-success mb-2" @click="$router.push('/add-training')">Dodaj sadržaj</button>
 	    			</div>	
 					<table border="1" class="table table-responsive">
 			    		<tr bgcolor="lightgrey" height="2px">
@@ -116,12 +117,15 @@ Vue.component("sport-facility-view",{
 			axios
 				.get('rest/sportFacilities/getFacilityByManagerUsername/' + this.loggedUser.username)
 					.then(response => {
-						this.sportFacility = response.data;
-						this.adress = response.data.lokacija.adresa;
-						this.getTrainersInFacility(response.data.id);
-						this.getVisitorsInFacility(response.data.id);
-						this.getTrainingsInFacility(response.data.id);
-						window.localStorage.setItem('sportFacilityId', response.data.id);
+						if(response.status !== 204){
+							this.loadButton = true;
+							this.sportFacility = response.data;
+							this.adress = response.data.lokacija.adresa;
+							this.getTrainersInFacility(response.data.id);
+							this.getVisitorsInFacility(response.data.id);
+							this.getTrainingsInFacility(response.data.id);
+							window.localStorage.setItem('sportFacilityId', response.data.id);
+						}				
 					})
 			
 		},
