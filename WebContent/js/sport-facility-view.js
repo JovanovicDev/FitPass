@@ -54,14 +54,17 @@ Vue.component("sport-facility-view",{
 			    			<th>Naziv</th>
 			    			<th>Opis</th>
 			    			<th>Doplata</th>
-			    			<th>Trener</th>			    			
+			    			<th>Trener</th>		
+			    			<th>Izmena</th>	    			
 			    		</tr>
 						<tr v-for="t in trainings">
 			    			<td><img height="120px" width="120px" v-bind:src="t.slika"></td>
 			    			<td>{{t.naziv}}</td>
 			    			<td>{{t.opis}}</td>
 			    			<td>{{t.doplata}}</td>
-			    			<td v-if="t.trener != null">{{t.trener.ime}} {{t.trener.prezime}}</td>			    			
+			    			<td v-if="t.trener != null">{{t.trener.ime}} {{t.trener.prezime}}</td>
+			    			<td v-if="t.trener == null"></td>
+			    			<td><button type="button" id="editButton" class="btn btn-outline-success" @click="editTraining(t.id)">Izmeni</button></td>			    			
 			    		</tr>
 			    	</table>
 			    	<h1>Treneri</h1>
@@ -141,6 +144,10 @@ Vue.component("sport-facility-view",{
 				.then(response => {
 					this.trainings = response.data;
 				})
+		},
+		editTraining(id){
+			window.localStorage.setItem('selectedTrainingId', id);
+			this.$router.push({name: 'editTraining', params: { id: id}});
 		}
 	},
 	

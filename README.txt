@@ -18,7 +18,7 @@
 
 + menadzer: pregled svih treninga u njegovom sportskom objektu
 
-	- menadzer: dodavanje novog sadrzaja u sportski objekat za koji je zaduzen(trening, sauna, ...)
++ menadzer: dodavanje novog sadrzaja u sportski objekat za koji je zaduzen(trening, sauna, ...)
 
 	- menadzer: izmena postojeceg sadrzaja
 

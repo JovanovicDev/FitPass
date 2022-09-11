@@ -83,6 +83,9 @@ Vue.component("Profile",{
 			.then(() => {
 				this.$router.push('/home');
 			})
+			.catch(() => {
+                this.submitError = true;
+            });
 		}
 	}
 	,

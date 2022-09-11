@@ -13,6 +13,7 @@ const AddUser = {template: '<add-user></add-user>'}
 const AddSportFacility = {template: '<add-sport-facility></add-sport-facility>'}
 const SelectedSportFacility = {template: '<selected-sport-facility></selected-sport-facility>'}
 const AddTraining = {template: '<add-training></add-training>'}
+const EditTraining = {template: '<edit-training></edit-training>'}
 
 const router = new VueRouter({
 	mode:'hash',
@@ -28,7 +29,8 @@ const router = new VueRouter({
 		{path:'/add-user', component:AddUser},
 		{path:'/add-sport-facility', component:AddSportFacility},
 		{path:'/selected-sport-facility/:id', name:'selectedSportFacility', component:SelectedSportFacility},
-		{path:'/add-training', component:AddTraining}
+		{path:'/add-training', component:AddTraining},
+		{path:'/edit-training/:id', name:'editTraining', component:EditTraining}
 	]
 });
 

@@ -14,9 +14,6 @@ Vue.component("navbar-guest",{
      					<li class="nav-item mx-2">
        						<button class="btn btn-outline-success" @click="$router.push('/sport-facilities')">Sportski objekti</button>
      					</li>    
-      					<li class="nav-item mx-2">
-        					<button class="btn btn-outline-success" @click="$router.push('/')">Treninzi</button>
-      					</li> 
       					<li class="nav-item ms-5">
         					<button class="btn btn-outline-success" @click="$router.push('/login')">Logovanje</button>
       					</li>  

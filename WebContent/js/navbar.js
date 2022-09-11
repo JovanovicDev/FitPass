@@ -19,9 +19,6 @@ Vue.component("navbar",{
        						<button class="btn btn-outline-success" @click="$router.push('/sport-facilities')">Sportski objekti</button>
      					</li>    
       					<li class="nav-item mx-2">
-        					<button class="btn btn-outline-success" @click="$router.push('/')">Treninzi</button>
-      					</li>   
-      					<li class="nav-item mx-2">
         					<button class="btn btn-outline-success" @click="$router.push('/profile')">Profil</button>
       					</li>   
       					<li class="nav-item ms-5">

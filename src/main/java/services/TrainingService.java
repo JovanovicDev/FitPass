@@ -59,9 +59,20 @@ public class TrainingService {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("/update")
 	//@Produces(MediaType.APPLICATION_JSON)
-	public void update(Trening training) throws JsonGenerationException, JsonMappingException, IOException {
-		TreningDAO treningDao = (TreningDAO)ctx.getAttribute("trainingDAO");
-		treningDao.update(training);
+	public void update(Trening t) throws JsonGenerationException, JsonMappingException, IOException {
+		TreningDAO treningDao = (TreningDAO)ctx.getAttribute("trainingDAO");			
+		
+		if(!t.getSlika().contains("images")) {
+			String imagePath = ctx.getRealPath("images/tt") + t.getId() + ".png";
+			byte[] decodedImg = Base64.getDecoder().decode(t.getSlika());
+			try (OutputStream stream = new FileOutputStream(imagePath)) {
+				stream.write(decodedImg);
+				stream.flush();
+			}catch(Exception ex) { }
+			t.setSlika("images/tt" + t.getId() + ".png");
+		}
+		
+		treningDao.update(t);	
 	}
 	
 	@GET
@@ -70,6 +81,14 @@ public class TrainingService {
 	public Collection<Trening> getTrainings() {
 		TreningDAO treningDao = (TreningDAO)ctx.getAttribute("trainingDAO");
 		return treningDao.findAll();
+	}
+	
+	@GET
+	@Path("/getById/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Trening getById(@PathParam("id") String id) {
+		TreningDAO treningDao = (TreningDAO)ctx.getAttribute("trainingDAO");
+		return treningDao.getById(Integer.parseInt(id));
 	}
 	
 	@GET
