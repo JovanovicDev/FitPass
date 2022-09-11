@@ -1,3 +1,5 @@
++ model
+
 + profili korisnika
 
 + administrator: pregled svih registrovanih korisnika
