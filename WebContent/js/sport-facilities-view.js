@@ -130,7 +130,7 @@ Vue.component("sport-facilities-view",{
 			
 			doSearch(){
 				var url = 'rest/sportFacilities/search?';
-				if(this.searchName != '') url = url + 'name=' + this.searchName + '&'; // MOZDA NIJE NAME NEGO IME AKO PUKNE PROVERI
+				if(this.searchName != '') url = url + 'name=' + this.searchName + '&';
 				if(this.searchType != '') url = url + 'type=' + this.searchType + '&';
 				if(this.searchCity != '') url = url + 'city=' + this.searchCity + '&';
 				if(this.searchAverageGrade != '') url = url + 'averageGrade=' + this.searchAverageGrade;

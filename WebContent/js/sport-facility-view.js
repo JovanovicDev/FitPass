@@ -43,8 +43,11 @@ Vue.component("sport-facility-view",{
 			    			<td>{{this.sportFacility.prosecnaOcena}}</td>			    			
 			    		</tr>
 			    	</table>
-			    	<h1>Treninzi</h1>
+			    	<h1>Sadržaj</h1>
 					<hr>
+					<div class="d-inline-flex align-items-center">
+						<button type="button" id="addButton" class="btn btn-outline-success mb-2" @click="$router.push('/add-training')">Dodaj sadržaj</button>
+	    			</div>	
 					<table border="1" class="table table-responsive">
 			    		<tr bgcolor="lightgrey" height="2px">
 			    			<th>Slika</th>
@@ -113,6 +116,7 @@ Vue.component("sport-facility-view",{
 						this.getTrainersInFacility(response.data.id);
 						this.getVisitorsInFacility(response.data.id);
 						this.getTrainingsInFacility(response.data.id);
+						window.localStorage.setItem('sportFacilityId', response.data.id);
 					})
 			
 		},
@@ -129,7 +133,6 @@ Vue.component("sport-facility-view",{
 				.get('rest/users/getVisitorsInFacility/' + id)
 				.then(response => (this.visitors = response.data))
 		},
-
 		getTrainingsInFacility(id){
 			axios
 				.get('rest/trainings/getTrainingsInFacility/' + id)

@@ -9,7 +9,7 @@ public class Trening {
 	private int trajanje; //u minutima
 	private Korisnik trener; //ako postoji
 	private String opis;
-	private String slika; //slika, stoji String za sada, mozda putanja do slike?
+	private String slika;
 	private int doplata;
 	
 	public Trening() {
